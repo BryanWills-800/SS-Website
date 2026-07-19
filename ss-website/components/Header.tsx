@@ -1,24 +1,22 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <a href="/" className="group flex min-w-0 items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm transition-colors group-hover:bg-zinc-800 dark:border-zinc-700 dark:bg-white dark:group-hover:bg-zinc-100">
-            <span className="text-sm font-semibold text-white dark:text-zinc-950">
-              SS
-            </span>
+    <header className="site-header">
+      <div className="site-header__inner">
+        <Link href="/" className="site-header__brand">
+          <div className="site-header__mark">
+            <span className="site-header__mark-text">SS</span>
           </div>
-          <div className="min-w-0">
-            <span className="block truncate text-base font-semibold text-zinc-950 dark:text-white " style={{ fontSize: "30px" }}>
-              Silicon Society
-            </span>
+          <div className="site-header__brand-copy">
+            <span className="site-header__title">Silicon Society</span>
+            <span className="site-header__subtitle">Architects of Digital Age</span>
           </div>
-        </a>
+        </Link>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          {/* Add some logo later here  */}
+        <div className="site-header__actions">
+          {/* Add some logo later here */}
         </div>
       </div>
     </header>
