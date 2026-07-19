@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+const logoSrc = "/logo.jpeg";
 
 export default function Header() {
   return (
@@ -7,11 +10,18 @@ export default function Header() {
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
           <div className="site-header__mark">
-            <span className="site-header__mark-text">SS</span>
+            <Image
+              className="site-header__logo"
+              src={logoSrc}
+              alt="Silicon Society logo"
+              width={100}
+              height={100}
+              priority
+            />
           </div>
           <div className="site-header__brand-copy">
-            <span className="site-header__title">Silicon Society</span>
-            <span className="site-header__subtitle">Architects of Digital Age</span>
+            <span className="site-header__title">Silicon Society - BITS Pilani</span>
+            <span className="site-header__subtitle">Empowering the Next Generation of Integrated Chip Design & VLSI Innovators</span>
           </div>
         </Link>
 
@@ -22,3 +32,4 @@ export default function Header() {
     </header>
   );
 }
+

@@ -1,4 +1,7 @@
+import Image from "next/image";
 import React from "react";
+
+const logoSrc = "/logo.jpeg";
 
 export default function Footer() {
   const sections = [
@@ -28,12 +31,18 @@ export default function Footer() {
           <div className="site-footer__summary">
             <div className="site-footer__brand">
               <div className="site-footer__mark">
-                <span className="site-footer__mark-text">SS</span>
+                <Image
+                  className="site-footer__logo"
+                  src={logoSrc}
+                  alt="Silicon Society logo"
+                  width={100}
+                  height={100}
+                />
               </div>
               <span className="site-footer__brand-name">Silicon Society</span>
             </div>
             <p className="site-footer__description">
-              Placeholder for tagline.
+              Empowering the Next Generation of Integrated Chip Design & VLSI Innovators
             </p>
           </div>
 
@@ -62,3 +71,4 @@ export default function Footer() {
     </footer>
   );
 }
+
