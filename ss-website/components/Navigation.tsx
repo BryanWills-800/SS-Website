@@ -34,7 +34,7 @@ const links: NavItem[] = [
       { label: "Research", href: "/verticals#research", active: false },
     ],
   },
-  { label: "About Us", href: "#about-us", active: false },
+  { label: "About Us", href: "/#about-us", active: false },
   { label: "Join Us", href: "/join-us", active: false },
   {
     label: "Socials",
