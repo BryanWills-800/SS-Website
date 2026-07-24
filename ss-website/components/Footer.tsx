@@ -8,16 +8,16 @@ export default function Footer() {
     {
       title: "About the Society",
       links: [
-        { label: "About Us", href: "/about-us" },
-        { label: "Verticals", href: "/verticals" },
-        { label: "Join Us", href: "/join-us" },
+        { label: "About Us", href: "#about-us" },
+        { label: "Verticals", href: "#verticals" },
+        { label: "Join Us", href: "#join-us" },
       ],
     },
     {
       title: "Contributions",
       links: [
-        { label: "Projects", href: "/projects" },
-        // { label: "Events", href: "/events" },
+        { label: "Projects", href: "#projects" },
+        // { label: "Events", href: "#events" },
       ],
     },
   ];
@@ -71,4 +71,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

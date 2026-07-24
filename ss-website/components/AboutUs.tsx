@@ -1,6 +1,7 @@
 import Image from "next/image";
 
-const aboutHeroImage = "/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif";
+const aboutHeroImage =
+  "/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif";
 
 const leadership = [
   {
@@ -35,18 +36,26 @@ const advisors = [
   "Curriculum architects who review project tracks, workshops, and mentorship paths.",
 ];
 
-export default function AboutUsPage() {
+export default function AboutUs() {
   return (
-    <main className="about-page">
-      <section className="about-hero">
+    <section
+      id="about-us"
+      className="about-page"
+      aria-labelledby="about-us-title"
+    >
+      <div className="about-hero">
         <div className="about-hero__content">
           <div className="about-hero__text">
-            <h1 className="about-hero__title">About Us</h1>
-            {/* <p className="about-page__label">The Vision & Network</p> */}
+            <h2 id="about-us-title" className="about-hero__title">
+              About Us
+            </h2>
             <p className="about-hero__copy">
-              Silicon Society exists to bridge the gap between academic theory and the core industry pipelines that shape modern electronics, semiconductors, embedded systems, and applied research.
+              Silicon Society exists to bridge the gap between academic theory
+              and the core industry pipelines that shape modern electronics,
+              semiconductors, embedded systems, and applied research.
             </p>
           </div>
+
           <div className="about-hero__media">
             <Image
               className="about-hero__image"
@@ -54,17 +63,19 @@ export default function AboutUsPage() {
               alt="Processor chip on a circuit board"
               width={640}
               height={420}
-              priority
             />
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="about-section about-section--mission">
+      <section id="mission" className="about-section about-section--mission">
         <div className="about-section__header">
           <p className="about-page__label">The Mission</p>
-          <h2 className="about-section__title">From classroom concepts to industry practice.</h2>
+          <h2 className="about-section__title">
+            From classroom concepts to industry practice.
+          </h2>
         </div>
+
         <div className="about-section__body">
           <p>
             The society anchors rigorous campus learning inside project-led,
@@ -81,14 +92,20 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="about-section">
+      <section id="leadership" className="about-section">
         <div className="about-section__header">
           <p className="about-page__label">Leadership Team</p>
-          <h2 className="about-section__title">Core leads across technical domains.</h2>
+          <h2 className="about-section__title">
+            Core leads across technical domains.
+          </h2>
         </div>
+
         <div className="leadership-grid">
           {leadership.map((member) => (
-            <article key={`${member.name}-${member.domain}`} className="leader-card">
+            <article
+              key={`${member.name}-${member.domain}`}
+              className="leader-card"
+            >
               <div className="leader-card__headshot" aria-hidden="true">
                 {member.initials}
               </div>
@@ -109,11 +126,14 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="about-section about-section--advisory">
+      <section id="advisory" className="about-section about-section--advisory">
         <div className="about-section__header">
           <p className="about-page__label">Advisory Board</p>
-          <h2 className="about-section__title">Faculty guidance, alumni perspective, stronger curriculum.</h2>
+          <h2 className="about-section__title">
+            Faculty guidance, alumni perspective, stronger curriculum.
+          </h2>
         </div>
+
         <div className="advisory-list">
           {advisors.map((item) => (
             <div key={item} className="advisory-list__item">
@@ -123,6 +143,7 @@ export default function AboutUsPage() {
           ))}
         </div>
       </section>
-    </main>
+    </section>
   );
 }
+

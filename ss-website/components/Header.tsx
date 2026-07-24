@@ -7,6 +7,11 @@ const logoSrc = "/logo.jpeg";
 export default function Header() {
   return (
     <header className="site-header">
+      <div className="site-header__background" aria-hidden="true">
+        <video className="site-header__video" autoPlay loop muted playsInline>
+          <source src="/video2.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
           <div className="site-header__mark">
@@ -32,4 +37,5 @@ export default function Header() {
     </header>
   );
 }
+
 

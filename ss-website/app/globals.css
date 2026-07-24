@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+
+/*
+==========================================================================
+Main theme variables
+==========================================================================
+*/
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,6 +32,40 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/*
+==========================================================================
+Global Scrollbar
+==========================================================================
+*/
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(4, 255, 0, 0.5) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(4, 255, 0, 0.5);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(4, 255, 0, 0.8);
+}
+
+/*
+==========================================================================
+App shell
+==========================================================================
+*/
+
 @layer components {
   .app-html {
     @apply h-full antialiased;
@@ -37,13 +78,34 @@ body {
   .app-main {
     @apply flex flex-1 flex-col;
   }
+}
 
+/*
+==========================================================================
+Site header
+==========================================================================
+*/
+
+@layer components {
   .site-header {
-    @apply top-0 z-50 border-b border-zinc-200/80 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90;
+    @apply relative top-0 z-50 isolate overflow-hidden border-b border-zinc-200/80 bg-zinc-950 dark:border-zinc-800;
+  }
+
+  .site-header__background {
+    @apply absolute inset-0 -z-10;
+  }
+
+  .site-header__background::after {
+    content: "";
+    @apply absolute inset-0 bg-zinc-950/55;
+  }
+
+  .site-header__video {
+    @apply h-full w-full object-cover;
   }
 
   .site-header__inner {
-    @apply mx-auto flex h-32 max-w-7xl items-center justify-between gap-4 px-2 sm:px-4 lg:px-5;
+    @apply relative z-10 mx-auto flex h-32 max-w-7xl items-center justify-between gap-4 px-2 sm:px-4 lg:px-5;
   }
 
   .site-header__brand {
@@ -58,23 +120,30 @@ body {
     @apply h-full w-full object-cover;
   }
 
-
   .site-header__brand-copy {
     @apply min-w-0;
   }
 
   .site-header__title {
-    @apply block truncate text-3xl font-semibold text-zinc-950 dark:text-white;
+    @apply block truncate text-3xl font-semibold text-white;
   }
 
   .site-header__subtitle {
-    @apply block truncate text-base font-semibold text-zinc-950 dark:text-white;
+    @apply block truncate text-base font-semibold text-white;
   }
 
   .site-header__actions {
     @apply flex shrink-0 items-center gap-2 sm:gap-3;
   }
+}
 
+/*
+==========================================================================
+Site nav
+==========================================================================
+*/
+
+@layer components {
   .site-nav {
     @apply border-b border-zinc-100 bg-zinc-50/50 dark:border-zinc-900 dark:bg-zinc-900/20;
   }
@@ -124,7 +193,15 @@ body {
   .site-nav__dropdown-link {
     @apply block rounded px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white;
   }
+}
 
+/*
+==========================================================================
+Site footer
+==========================================================================
+*/
+
+@layer components {
   .site-footer {
     @apply mt-auto border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950;
   }
@@ -152,7 +229,6 @@ body {
   .site-footer__logo {
     @apply h-full w-full object-cover;
   }
-
 
   .site-footer__brand-name {
     @apply font-semibold text-zinc-950 dark:text-white;
@@ -183,6 +259,12 @@ body {
   }
 }
 
+/*
+==========================================================================
+Home page — hero / background video
+==========================================================================
+*/
+
 @layer components {
   .home-page {
     @apply relative min-h-[calc(100vh-9.25rem)] overflow-hidden bg-zinc-950;
@@ -195,16 +277,36 @@ body {
   .video-bg {
     @apply h-full w-full object-cover;
   }
+
+  .home-page__content {
+    @apply absolute inset-0 z-10 mx-auto grid max-w-7xl content-start gap-10 px-[64px] py-[40px] text-white sm:gap-5 lg:grid-rows-[1fr] lg:items-stretch lg:gap-20;
+  }
+
+  @media (min-width: 1024px) {
+    .home-page__content {
+      grid-template-columns: minmax(24rem, 1fr) minmax(24rem, 0.8fr);
+    }
+  }
 }
+
+/*
+==========================================================================
+Home page — title
+==========================================================================
+*/
 
 @layer components {
   .home-title {
-    max-width: min(28rem, calc(100% - 3rem));
-    @apply absolute left-6 top-10 z-10 min-w-0 text-left text-white sm:left-10 sm:top-14 lg:left-16 lg:top-20;
+    max-width: 32rem;
+    @apply min-w-0 text-left;
+  }
+
+  .home-title__greetings {
+    @apply text-xl font-semibold tracking-wide text-white/80;
   }
 
   .home-title__heading {
-    @apply text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl;
+    @apply text-4xl font-bold leading-tight uppercase sm:text-4xl lg:text-5xl;
   }
 
   .home-title__subheading {
@@ -212,9 +314,92 @@ body {
   }
 }
 
+/*
+==========================================================================
+Home page — news bulletin
+==========================================================================
+*/
+
+@layer components {
+  .home-newsbulletin {
+    @apply max-w-xl self-stretch border-l border-white/60 pl-5 text-left sm:pl-6 lg:h-full lg:min-h-full lg:max-w-none;
+  }
+
+  .home-newsbulletin__title {
+    @apply text-xl font-semibold uppercase tracking-wide text-white/80 sm:text-2xl;
+  }
+
+  .home-newsbulletin__content {
+    @apply my-3 space-y-4 overflow-y-auto pr-2;
+    max-height: 24rem;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(4, 255, 0, 0.5) transparent;
+  }
+
+  /* Make links behave as block elements so space-y works */
+  .home-newsbulletin__content>a {
+    @apply block;
+  }
+
+  /* Chrome, Edge, Safari */
+  .home-newsbulletin__content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .home-newsbulletin__content::-webkit-scrollbar-track {
+    background: rgba(4, 255, 0, 0.05);
+    border-radius: 9999px;
+  }
+
+  .home-newsbulletin__content::-webkit-scrollbar-thumb {
+    background: rgba(4, 255, 0, 0.5);
+    border-radius: 9999px;
+    transition: background 0.3s ease;
+  }
+
+  .home-newsbulletin__content::-webkit-scrollbar-thumb:hover {
+    background: rgba(4, 255, 0, 0.8);
+  }
+
+  .home-newsbulletin__item {
+    @apply rounded-2xl border border-white/10 bg-white/5 p-6;
+    @apply shadow-lg backdrop-blur-md;
+    @apply transition-all duration-300;
+    @apply hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl;
+  }
+
+  .home-newsbulletin__item--active {
+    @apply border-white/30 ring-1 ring-white/20;
+  }
+
+  .home-newsbulletin__item__date {
+    @apply text-xs font-medium uppercase tracking-widest text-white/50;
+  }
+
+  .home-newsbulletin__item__title {
+    @apply mt-2 text-xl font-semibold leading-snug text-white sm:text-2xl;
+  }
+
+  .home-newsbulletin__item__text {
+    @apply mt-3 text-base leading-7 text-white/75 sm:text-lg;
+  }
+}
+
+/*
+==========================================================================
+About page — hero
+==========================================================================
+*/
+
 @layer components {
   .about-page {
     @apply bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white;
+  }
+
+  .about-page__label {
+    @apply text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400;
   }
 
   .about-hero {
@@ -222,11 +407,11 @@ body {
   }
 
   .about-hero__content {
-    @apply mx-auto max-w-7xl px-2 py-16 sm:px-4 sm:py-20 lg:px-5;
+    @apply mx-auto grid max-w-7xl gap-5 px-2 py-16 sm:px-4 sm:py-20 lg:grid-cols-[1fr_0.9fr] lg:items-start lg:px-5;
   }
 
-  .about-page__label {
-    @apply text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400;
+  .about-hero__text {
+    @apply max-w-3xl justify-self-start p-4 text-left sm:p-6 lg:p-8;
   }
 
   .about-hero__title {
@@ -237,6 +422,22 @@ body {
     @apply mt-6 max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-300;
   }
 
+  .about-hero__media {
+    @apply overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm dark:border-zinc-800;
+  }
+
+  .about-hero__image {
+    @apply aspect-[16/11] h-full w-full object-cover;
+  }
+}
+
+/*
+==========================================================================
+About page — mission / advisory sections
+==========================================================================
+*/
+
+@layer components {
   .about-section {
     @apply mx-auto grid max-w-7xl gap-10 px-2 py-14 sm:px-4 lg:grid-cols-[0.85fr_1.6fr] lg:px-5;
   }
@@ -260,7 +461,15 @@ body {
   .about-section__body {
     @apply space-y-5 text-base leading-7 text-zinc-600 dark:text-zinc-300;
   }
+}
 
+/*
+==========================================================================
+About page — leadership grid
+==========================================================================
+*/
+
+@layer components {
   .leadership-grid {
     @apply grid gap-5 sm:grid-cols-2;
   }
@@ -288,7 +497,15 @@ body {
   .leader-card__link {
     @apply mt-3 inline-flex text-sm font-semibold text-zinc-950 underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-zinc-950 dark:text-white dark:decoration-zinc-600 dark:hover:decoration-white;
   }
+}
 
+/*
+==========================================================================
+About page — advisory list
+==========================================================================
+*/
+
+@layer components {
   .advisory-list {
     @apply grid gap-4;
   }
@@ -301,28 +518,3 @@ body {
     @apply mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-zinc-950 dark:bg-white;
   }
 }
-
-@layer components {
-  .about-hero__content {
-    @apply grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-start;
-  }
-
-  .about-hero__text {
-    @apply max-w-3xl justify-self-start p-4 text-left sm:p-6 lg:p-8;
-  }
-
-  .about-hero__media {
-    @apply overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 shadow-sm dark:border-zinc-800;
-  }
-
-  .about-hero__image {
-    @apply aspect-[16/11] h-full w-full object-cover;
-  }
-}
-
-
-
-
-
-
-
