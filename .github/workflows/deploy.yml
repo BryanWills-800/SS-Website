@@ -1,0 +1,12 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Placeholder
+        run: echo "Configure deployment for your hosting provider."
