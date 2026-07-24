@@ -4,5 +4,11 @@
         "newsbulletin",
         "Pilani",
         "VLSI"
-    ]
+    ],
+    "piny.project_settings": {
+        "open-pages": [
+            "pinyfakepage.html"
+        ]
+    },
+    "css.lint.unknownAtRules": "ignore"
 }

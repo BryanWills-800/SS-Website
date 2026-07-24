@@ -7,8 +7,7 @@ interface ProjectItem {
   category: string;
   description: string;
   tags: string[];
-  status: "In Progress" | "Completed" | "Active Research";
-  date: string;
+  metaText: string;
 }
 
 const currentProjects: ProjectItem[] = [
@@ -19,8 +18,7 @@ const currentProjects: ProjectItem[] = [
     description:
       "Design and implementation of a 5-stage pipelined 32-bit RISC-V RV32I core with hazard detection, branch prediction, and synthesizable Verilog modules.",
     tags: ["Verilog", "FPGA", "RISC-V", "SystemVerilog"],
-    status: "In Progress",
-    date: "Spring 2026",
+    metaText: "Digital Division • In Progress",
   },
   {
     id: "smart-embedded-node",
@@ -29,8 +27,7 @@ const currentProjects: ProjectItem[] = [
     description:
       "Ultra-low power wireless sensor node utilizing custom PCB design, sub-GHz transceiver, and precision analog front-end for ambient monitoring.",
     tags: ["PCB Design", "KiCad", "Embedded C", "STM32"],
-    status: "In Progress",
-    date: "Spring 2026",
+    metaText: "Analog & Embedded • In Progress",
   },
   {
     id: "neuromorphic-sim",
@@ -39,8 +36,7 @@ const currentProjects: ProjectItem[] = [
     description:
       "Simulating bio-inspired spike-timing-dependent plasticity (STDP) mechanisms targeting neuromorphic hardware substrates.",
     tags: ["Python", "PyTorch", "Neuromorphic", "FPGA"],
-    status: "Active Research",
-    date: "Winter 2025 - Present",
+    metaText: "Research Division • Active Research",
   },
 ];
 
@@ -52,8 +48,7 @@ const pastProjects: ProjectItem[] = [
     description:
       "Hardware accelerator for digital signal processing algorithms including 1024-point FFT and FIR audio filters implemented on Xilinx Artix-7.",
     tags: ["DSP", "FPGA", "Xilinx", "MATLAB"],
-    status: "Completed",
-    date: "Fall 2025",
+    metaText: "Digital Division • Fall 2025",
   },
   {
     id: "low-noise-amp",
@@ -62,8 +57,7 @@ const pastProjects: ProjectItem[] = [
     description:
       "Custom schematic design and parasitic layout extraction for a 2.4GHz RF LNA in 180nm CMOS technology targeting low noise figure and high gain.",
     tags: ["Cadence Virtuoso", "CMOS", "RF IC", "Analog Layout"],
-    status: "Completed",
-    date: "Summer 2025",
+    metaText: "Analog Division • Summer 2025",
   },
   {
     id: "autonomous-rover-controller",
@@ -72,29 +66,47 @@ const pastProjects: ProjectItem[] = [
     description:
       "Dual-core RTOS microcontroller system orchestrating motor control, CAN-bus telemetry, and obstacle avoidance sensor fusion.",
     tags: ["FreeRTOS", "C++", "CAN Bus", "Sensor Fusion"],
-    status: "Completed",
-    date: "Spring 2025",
+    metaText: "Embedded Systems • Spring 2025",
   },
 ];
 
+function ProjectCard({ project }: { project: ProjectItem }) {
+  return (
+    <article className="project-card">
+      <div className="project-card__meta">
+        <span className="project-card__category">{project.metaText}</span>
+      </div>
+      <h3 className="project-card__title">{project.title}</h3>
+      <p className="project-card__description">{project.description}</p>
+      <div className="project-card__tags">
+        {project.tags.map((tag) => (
+          <span key={tag} className="project-card__tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 export default function ProjectsPage() {
   return (
-    <div className="about-page">
+    <div className="projects-page">
       {/* Projects Hero */}
-      <section className="about-hero" aria-labelledby="projects-hero-title">
-        <div className="about-hero__content">
-          <div className="about-hero__text">
-            <p className="about-page__label">Innovation & Engineering</p>
-            <h1 id="projects-hero-title" className="about-hero__title">
+      <section className="projects-hero" aria-labelledby="projects-hero-title">
+        <div className="projects-hero__content">
+          <div className="projects-hero__text">
+            <p className="projects-page__label">Innovation & Engineering</p>
+            <h1 id="projects-hero-title" className="projects-hero__title">
               Our Projects
             </h1>
-            <p className="about-hero__copy">
+            <p className="projects-hero__copy">
               Explore the hardware designs, embedded systems, silicon research, and digital core pipelines engineered by members of Silicon Society.
             </p>
           </div>
-          <div className="about-hero__media">
+          <div className="projects-hero__media">
             <Image
-              className="about-hero__image"
+              className="projects-hero__image"
               src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
               alt="Processor chip design"
               width={640}
@@ -105,86 +117,36 @@ export default function ProjectsPage() {
       </section>
 
       {/* Current Projects Section */}
-      <section id="current" className="about-section about-section--mission" aria-labelledby="current-projects-title">
-        <div className="about-section__header">
-          <p className="about-page__label">Active Development</p>
-          <h2 id="current-projects-title" className="about-section__title">
+      <section id="current" className="projects-section projects-section--current" aria-labelledby="current-projects-title">
+        <div className="projects-section__header">
+          <p className="projects-page__label">Active Development</p>
+          <h2 id="current-projects-title" className="projects-section__title">
             Current Projects
           </h2>
         </div>
 
-        <div className="about-section__body">
-          <div className="leadership-grid">
+        <div className="projects-section__body">
+          <div className="projects-grid">
             {currentProjects.map((project) => (
-              <article key={project.id} className="leader-card" style={{ flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
-                  <span className="home-newsbulletin__item__date">{project.category} • {project.status}</span>
-                </div>
-                <h3 className="leader-card__name" style={{ fontSize: "1.25rem", marginTop: "0.5rem" }}>
-                  {project.title}
-                </h3>
-                <p className="leader-card__domain">{project.description}</p>
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="site-nav__link"
-                      style={{
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: "0.375rem",
-                        fontSize: "0.75rem",
-                        border: "1px solid rgba(255, 255, 255, 0.15)",
-                        background: "rgba(255, 255, 255, 0.05)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Past Work Section */}
-      <section id="past" className="about-section about-section--advisory" aria-labelledby="past-work-title">
-        <div className="about-section__header">
-          <p className="about-page__label">Archive & Milestones</p>
-          <h2 id="past-work-title" className="about-section__title">
+      <section id="past" className="projects-section projects-section--past" aria-labelledby="past-work-title">
+        <div className="projects-section__header">
+          <p className="projects-page__label">Archive & Milestones</p>
+          <h2 id="past-work-title" className="projects-section__title">
             Past Work
           </h2>
         </div>
 
-        <div className="about-section__body">
-          <div className="leadership-grid">
+        <div className="projects-section__body">
+          <div className="projects-grid">
             {pastProjects.map((project) => (
-              <article key={project.id} className="leader-card" style={{ flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
-                  <span className="home-newsbulletin__item__date">{project.category} • {project.date}</span>
-                </div>
-                <h3 className="leader-card__name" style={{ fontSize: "1.25rem", marginTop: "0.5rem" }}>
-                  {project.title}
-                </h3>
-                <p className="leader-card__domain">{project.description}</p>
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.75rem" }}>
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="site-nav__link"
-                      style={{
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: "0.375rem",
-                        fontSize: "0.75rem",
-                        border: "1px solid rgba(255, 255, 255, 0.15)",
-                        background: "rgba(255, 255, 255, 0.05)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </article>
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </div>

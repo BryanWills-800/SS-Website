@@ -42,22 +42,22 @@ const socialPlatforms: SocialPlatform[] = [
 
 export default function SocialsPage() {
   return (
-    <div className="about-page">
+    <div className="socials-page">
       {/* Socials Hero */}
-      <section className="about-hero" aria-labelledby="socials-hero-title">
-        <div className="about-hero__content">
-          <div className="about-hero__text">
-            <p className="about-page__label">Community & Media</p>
-            <h1 id="socials-hero-title" className="about-hero__title">
+      <section className="socials-hero" aria-labelledby="socials-hero-title">
+        <div className="socials-hero__content">
+          <div className="socials-hero__text">
+            <p className="socials-page__label">Community & Media</p>
+            <h1 id="socials-hero-title" className="socials-hero__title">
               Connect With Us
             </h1>
-            <p className="about-hero__copy">
+            <p className="socials-hero__copy">
               Stay updated with Silicon Society across our social channels, open-source repositories, and video lectures.
             </p>
           </div>
-          <div className="about-hero__media">
+          <div className="socials-hero__media">
             <Image
-              className="about-hero__image"
+              className="socials-hero__image"
               src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
               alt="Community banner"
               width={640}
@@ -68,29 +68,28 @@ export default function SocialsPage() {
       </section>
 
       {/* Social Channels List */}
-      <section id="channels" className="about-section about-section--mission" aria-labelledby="channels-title">
-        <div className="about-section__header">
-          <p className="about-page__label">Social Hub</p>
-          <h2 id="channels-title" className="about-section__title">
+      <section id="channels" className="socials-section socials-section--channels" aria-labelledby="channels-title">
+        <div className="socials-section__header">
+          <p className="socials-page__label">Social Hub</p>
+          <h2 id="channels-title" className="socials-section__title">
             Official Channels
           </h2>
         </div>
 
-        <div className="about-section__body">
-          <div className="leadership-grid">
+        <div className="socials-section__body">
+          <div className="socials-grid">
             {socialPlatforms.map((platform) => (
-              <article key={platform.name} className="leader-card" style={{ flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                  <h3 className="leader-card__name" style={{ fontSize: "1.25rem" }}>{platform.name}</h3>
-                  <span className="home-newsbulletin__item__date">{platform.handle}</span>
+              <article key={platform.name} className="social-card">
+                <div className="social-card__header">
+                  <h3 className="social-card__name">{platform.name}</h3>
+                  <span className="social-card__handle">{platform.handle}</span>
                 </div>
-                <p className="leader-card__domain" style={{ marginTop: "0.5rem" }}>{platform.description}</p>
+                <p className="social-card__description">{platform.description}</p>
                 <a
-                  className="leader-card__link"
+                  className="social-card__link"
                   href={platform.url}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ marginTop: "1rem" }}
                 >
                   {platform.actionText} →
                 </a>

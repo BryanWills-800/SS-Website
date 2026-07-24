@@ -61,22 +61,22 @@ const verticalsData: VerticalInfo[] = [
 
 export default function VerticalsPage() {
   return (
-    <div className="about-page">
+    <div className="verticals-page">
       {/* Verticals Hero */}
-      <section className="about-hero" aria-labelledby="verticals-hero-title">
-        <div className="about-hero__content">
-          <div className="about-hero__text">
-            <p className="about-page__label">Technical Domains</p>
-            <h1 id="verticals-hero-title" className="about-hero__title">
+      <section className="verticals-hero" aria-labelledby="verticals-hero-title">
+        <div className="verticals-hero__content">
+          <div className="verticals-hero__text">
+            <p className="verticals-page__label">Technical Domains</p>
+            <h1 id="verticals-hero-title" className="verticals-hero__title">
               Specialized Divisions
             </h1>
-            <p className="about-hero__copy">
+            <p className="verticals-hero__copy">
               Silicon Society is organized into three core technical verticals, providing structured learning tracks, hands-on project labs, and specialized mentorship.
             </p>
           </div>
-          <div className="about-hero__media">
+          <div className="verticals-hero__media">
             <Image
-              className="about-hero__image"
+              className="verticals-hero__image"
               src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
               alt="Silicon chip layout preview"
               width={640}
@@ -87,52 +87,45 @@ export default function VerticalsPage() {
       </section>
 
       {/* Vertical Sections */}
-      {verticalsData.map((vert, idx) => (
+      {verticalsData.map((vert) => (
         <section
           key={vert.id}
           id={vert.id}
-          className={`about-section ${idx !== 0 ? "about-section--advisory" : "about-section--mission"}`}
+          className={`verticals-section verticals-section--${vert.id}`}
           aria-labelledby={`${vert.id}-title`}
         >
-          <div className="about-section__header">
-            <p className="about-page__label">{vert.label}</p>
-            <h2 id={`${vert.id}-title`} className="about-section__title">
+          <div className="verticals-section__header">
+            <p className="verticals-page__label">{vert.label}</p>
+            <h2 id={`${vert.id}-title`} className="verticals-section__title">
               {vert.title}
             </h2>
-            <p className="leader-card__domain" style={{ marginTop: "0.5rem", fontWeight: 600 }}>
+            <p className="verticals-section__subtitle">
               {vert.subtitle}
             </p>
           </div>
 
-          <div className="about-section__body">
-            <p>{vert.description}</p>
+          <div className="verticals-section__body">
+            <p className="verticals-section__description">{vert.description}</p>
             
-            <div style={{ marginTop: "1.5rem" }}>
-              <h3 className="site-footer__heading" style={{ marginBottom: "0.75rem" }}>Core Focus Areas</h3>
-              <div className="advisory-list">
+            <div className="verticals-section__focus">
+              <h3 className="verticals-section__subheading">Core Focus Areas</h3>
+              <div className="verticals-focus-list">
                 {vert.focusAreas.map((area) => (
-                  <div key={area} className="advisory-list__item" style={{ padding: "0.75rem 1rem" }}>
-                    <span className="advisory-list__marker" aria-hidden="true" />
-                    <p style={{ margin: 0, fontSize: "0.95rem" }}>{area}</p>
+                  <div key={area} className="verticals-focus-list__item">
+                    <span className="verticals-focus-list__marker" aria-hidden="true" />
+                    <p className="verticals-focus-list__text">{area}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div style={{ marginTop: "1.5rem" }}>
-              <h3 className="site-footer__heading" style={{ marginBottom: "0.75rem" }}>Tools & Technologies</h3>
-              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+            <div className="verticals-section__tools">
+              <h3 className="verticals-section__subheading">Tools & Technologies</h3>
+              <div className="verticals-tools-grid">
                 {vert.toolsAndTech.map((tool) => (
                   <span
                     key={tool}
-                    className="site-nav__link"
-                    style={{
-                      padding: "0.25rem 0.75rem",
-                      borderRadius: "0.375rem",
-                      fontSize: "0.85rem",
-                      border: "1px solid rgba(255, 255, 255, 0.15)",
-                      background: "rgba(255, 255, 255, 0.05)",
-                    }}
+                    className="verticals-tools-grid__badge"
                   >
                     {tool}
                   </span>
