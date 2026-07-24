@@ -22,7 +22,6 @@ const links: NavItem[] = [
     children: [
       { label: "Current Projects", href: "/projects#current", active: false },
       { label: "Past Work", href: "/projects#past", active: false },
-      { label: "Start a Project", href: "/projects#start", active: false },
     ],
   },
   {
@@ -30,16 +29,16 @@ const links: NavItem[] = [
     href: "/verticals",
     active: false,
     children: [
-      { label: "Digital Division", href: "/verticals#software", active: false },
-      { label: "Analog Division", href: "/verticals#hardware", active: false },
+      { label: "Digital Division", href: "/verticals#digital", active: false },
+      { label: "Analog Division", href: "/verticals#analog", active: false },
       { label: "Research", href: "/verticals#research", active: false },
     ],
   },
   { label: "About Us", href: "#about-us", active: false },
-  { label: "Join Us", href: "#join-us", active: false },
+  { label: "Join Us", href: "/join-us", active: false },
   {
     label: "Socials",
-    href: "#socials",
+    href: "/socials",
     active: false,
     children: [
       { label: "LinkedIn", href: LINKEDIN_LINK, active: false },
