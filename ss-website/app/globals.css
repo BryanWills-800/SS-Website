@@ -439,15 +439,15 @@ About page — mission / advisory sections
 
 @layer components {
   .about-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+    @apply mx-auto grid max-w-7xl gap-10 px-2 py-14 sm:px-4 lg:grid-cols-[0.85fr_1.6fr] lg:px-5;
   }
 
   .about-section--mission {
-    @apply border-zinc-200 dark:border-zinc-800 border-b;
+    @apply border-b border-zinc-200 dark:border-zinc-800;
   }
 
   .about-section--advisory {
-    @apply border-zinc-200 dark:border-zinc-800 border-t;
+    @apply border-t border-zinc-200 dark:border-zinc-800;
   }
 
   .about-section__header {
@@ -455,11 +455,11 @@ About page — mission / advisory sections
   }
 
   .about-section__title {
-    @apply mt-3 font-semibold text-zinc-950 dark:text-white text-2xl sm:text-3xl leading-tight;
+    @apply mt-3 text-2xl font-semibold leading-tight text-zinc-950 dark:text-white sm:text-3xl;
   }
 
   .about-section__body {
-    @apply space-y-5 text-zinc-600 dark:text-zinc-300 text-base leading-7;
+    @apply space-y-5 text-base leading-7 text-zinc-600 dark:text-zinc-300;
   }
 }
 
@@ -471,7 +471,7 @@ About page — leadership grid
 
 @layer components {
   .leadership-grid {
-    @apply gap-5 grid sm:grid-cols-2;
+    @apply grid gap-5 sm:grid-cols-2;
   }
 
   .leader-card {
@@ -479,7 +479,7 @@ About page — leadership grid
   }
 
   .leader-card__headshot {
-    @apply flex justify-center items-center bg-zinc-950 dark:bg-white rounded-md w-16 h-16 font-semibold text-white dark:text-zinc-950 text-sm shrink-0;
+    @apply flex h-16 w-16 shrink-0 items-center justify-center rounded-md bg-zinc-950 text-sm font-semibold text-white dark:bg-white dark:text-zinc-950;
   }
 
   .leader-card__content {
@@ -520,9 +520,7 @@ About page — advisory list
 }
 
 /*
-==========================================================================
 Projects page — styles
-==========================================================================
 */
 
 @layer components {
@@ -620,9 +618,7 @@ Projects page — styles
 }
 
 /*
-==========================================================================
 Verticlas page — styles
-==========================================================================
 */
 
 @layer components {
@@ -724,9 +720,7 @@ Verticlas page — styles
 }
 
 /*
-==========================================================================
 Join Us page — styles
-==========================================================================
 */
 
 @layer components {
@@ -828,9 +822,7 @@ Join Us page — styles
 }
 
 /*
-==========================================================================
 Socials page — styles
-==========================================================================
 */
 
 @layer components {
