@@ -433,7 +433,7 @@ About page — mission / advisory sections
 
 @layer components {
   .about-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
   }
 
   .about-section--mission {
@@ -514,9 +514,7 @@ About page — advisory list
 }
 
 /*
-==========================================================================
 Projects page — styles
-==========================================================================
 */
 
 @layer components {
@@ -744,9 +742,7 @@ Verticals page — styles
 }
 
 /*
-==========================================================================
 Join Us page — styles
-==========================================================================
 */
 
 @layer components {
@@ -848,9 +844,7 @@ Join Us page — styles
 }
 
 /*
-==========================================================================
 Socials page — styles
-==========================================================================
 */
 
 @layer components {
