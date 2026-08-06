@@ -39,6 +39,7 @@ Global Scrollbar
 */
 
 html {
+  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(4, 255, 0, 0.5) transparent;
 }
@@ -72,11 +73,11 @@ App shell
   }
 
   .app-body {
-    @apply flex min-h-full flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50;
+    @apply flex flex-col bg-white dark:bg-zinc-950 min-h-full text-zinc-900 dark:text-zinc-50;
   }
 
   .app-main {
-    @apply flex flex-1 flex-col;
+    @apply flex flex-col flex-1;
   }
 }
 
@@ -88,11 +89,11 @@ Site header
 
 @layer components {
   .site-header {
-    @apply relative top-0 z-50 isolate overflow-hidden border-b border-zinc-200/80 bg-zinc-950 dark:border-zinc-800;
+    @apply top-0 z-50 isolate relative overflow-hidden;
   }
 
   .site-header__background {
-    @apply absolute inset-0 -z-10;
+    @apply -z-10 absolute inset-0;
   }
 
   .site-header__background::after {
@@ -101,23 +102,23 @@ Site header
   }
 
   .site-header__video {
-    @apply h-full w-full object-cover;
+    @apply w-full h-full object-cover;
   }
 
   .site-header__inner {
-    @apply relative z-10 mx-auto flex h-32 max-w-7xl items-center justify-between gap-4 px-2 sm:px-4 lg:px-5;
+    @apply z-10 relative flex justify-between items-center gap-4 mx-2 px-2 sm:px-4 lg:px-5 max-w-7xl h-32;
   }
 
   .site-header__brand {
-    @apply flex min-w-0 items-center gap-3;
+    @apply flex items-center gap-3 min-w-0;
   }
 
   .site-header__mark {
-    @apply h-25 w-25 shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm dark:border-zinc-700;
+    @apply bg-white shadow-sm border border-zinc-200 dark:border-zinc-700 rounded-lg w-25 h-25 overflow-hidden shrink-0;
   }
 
   .site-header__logo {
-    @apply h-full w-full object-cover;
+    @apply w-full h-full object-cover;
   }
 
   .site-header__brand-copy {
@@ -125,15 +126,15 @@ Site header
   }
 
   .site-header__title {
-    @apply block truncate text-3xl font-semibold text-white;
+    @apply block font-semibold text-white text-3xl truncate;
   }
 
   .site-header__subtitle {
-    @apply block truncate text-base font-semibold text-white;
+    @apply block font-semibold text-white text-base truncate;
   }
 
   .site-header__actions {
-    @apply flex shrink-0 items-center gap-2 sm:gap-3;
+    @apply flex items-center gap-2 sm:gap-3 shrink-0;
   }
 }
 
@@ -145,23 +146,23 @@ Site nav
 
 @layer components {
   .site-nav {
-    @apply border-b border-zinc-100 bg-zinc-50/50 dark:border-zinc-900 dark:bg-zinc-900/20;
+    @apply border-b border-blue-100 bg-blue-50/50 dark:border-blue-800/50 dark:bg-blue-950/20;
   }
 
   .site-nav__inner {
-    @apply mx-auto max-w-7xl px-2 sm:px-4 lg:px-5;
+    @apply mx-2 px-2 sm:px-4 lg:px-5 max-w-7xl text-center;
   }
 
   .site-nav__links {
-    @apply flex h-12 space-x-8 overflow-visible;
+    @apply flex space-x-5 h-12 max-h-[40px] overflow-visible;
   }
 
   .site-nav__link {
-    @apply inline-flex items-center whitespace-nowrap border-b-2 border-transparent px-1 text-sm font-medium text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200;
+    @apply inline-flex items-center px-2 border-transparent hover:border-zinc-300 border-b-2 font-medium text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-200 dark:text-zinc-400 text-sm whitespace-nowrap transition-colors;
   }
 
   .site-nav__link--active {
-    @apply border-indigo-600 text-zinc-900 dark:border-indigo-400 dark:text-white;
+    @apply border-indigo-600 dark:border-indigo-400 text-zinc-900 dark:text-white;
   }
 
   .site-nav__dropdown {
@@ -173,7 +174,7 @@ Site nav
   }
 
   .site-nav__dropdown-caret {
-    @apply text-[10px] leading-none text-zinc-400 transition-transform;
+    @apply text-[10px] text-zinc-400 leading-none transition-transform;
   }
 
   .site-nav__dropdown-menu {
@@ -191,7 +192,7 @@ Site nav
   }
 
   .site-nav__dropdown-link {
-    @apply block rounded px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white;
+    @apply block hover:bg-zinc-50 dark:hover:bg-zinc-900 px-3 py-2 rounded font-medium text-zinc-600 hover:text-zinc-950 dark:hover:text-white dark:text-zinc-400 text-sm transition-colors;
   }
 }
 
@@ -203,15 +204,15 @@ Site footer
 
 @layer components {
   .site-footer {
-    @apply mt-auto border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950;
+    @apply bg-white dark:bg-zinc-950 mt-auto border-zinc-200 dark:border-zinc-800 border-t;
   }
 
   .site-footer__inner {
-    @apply mx-auto max-w-7xl px-2 py-10 sm:px-4 lg:px-5;
+    @apply mx-2 px-2 sm:px-4 lg:px-5 py-10 max-w-7xl;
   }
 
   .site-footer__content {
-    @apply grid gap-10 lg:grid-cols-[1.4fr_2fr];
+    @apply gap-10 grid lg:grid-cols-[1.4fr_2fr];
   }
 
   .site-footer__summary {
@@ -219,43 +220,47 @@ Site footer
   }
 
   .site-footer__brand {
-    @apply flex items-center gap-3;
+    @apply flex items-center gap-2;
   }
 
   .site-footer__mark {
-    @apply h-25 w-25 shrink-0 overflow-hidden rounded-md border border-zinc-200 bg-white dark:border-zinc-700;
+    @apply bg-white border border-zinc-200 dark:border-zinc-700 rounded-md w-25 h-25 overflow-hidden shrink-0;
   }
 
   .site-footer__logo {
-    @apply h-full w-full object-cover;
+    @apply w-full h-full object-cover;
   }
 
   .site-footer__brand-name {
-    @apply font-semibold text-zinc-950 dark:text-white;
+    @apply font-bold text-zinc-950 dark:text-white text-2xl;
+  }
+
+  .site-footer__brand-text {
+    @apply flex flex-col gap-0;
   }
 
   .site-footer__description {
-    @apply mt-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400;
+    @apply mt-1 text-zinc-600 dark:text-zinc-400 text-sm leading-6;
   }
 
   .site-footer__sections {
-    @apply grid grid-cols-2 justify-items-start gap-8 text-left sm:grid-cols-4;
+    @apply flex flex-wrap gap-10 ml-auto;
   }
 
   .site-footer__heading {
-    @apply text-xs font-semibold uppercase text-zinc-950 dark:text-white;
+    @apply font-semibold text-zinc-950 dark:text-white text-xs uppercase;
   }
 
   .site-footer__list {
-    @apply mt-4 space-y-3;
+    @apply space-y-3 mt-4;
   }
 
   .site-footer__link {
-    @apply text-sm text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white;
+    @apply text-zinc-600 hover:text-zinc-950 dark:hover:text-white dark:text-zinc-400 text-sm transition-colors;
   }
 
   .site-footer__bottom {
-    @apply mt-10 flex flex-col gap-3 border-t border-zinc-200 pt-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-500 sm:flex-row sm:items-center sm:justify-between;
+    @apply flex sm:flex-row flex-col sm:justify-between sm:items-center gap-3 mt-10 pt-6 border-zinc-200 dark:border-zinc-800 border-t text-zinc-500 dark:text-zinc-500 text-sm;
   }
 }
 
@@ -267,7 +272,7 @@ Home page — hero / background video
 
 @layer components {
   .home-page {
-    @apply relative min-h-[calc(100vh-9.25rem)] overflow-hidden bg-zinc-950;
+    @apply relative bg-zinc-950 min-h-[calc(100vh-7.25rem)] overflow-hidden;
   }
 
   .video-bg-container {
@@ -275,11 +280,11 @@ Home page — hero / background video
   }
 
   .video-bg {
-    @apply h-full w-full object-cover;
+    @apply w-full h-full object-cover;
   }
 
   .home-page__content {
-    @apply absolute inset-0 z-10 mx-auto grid max-w-7xl content-start gap-10 px-[64px] py-[40px] text-white sm:gap-5 lg:grid-rows-[1fr] lg:items-stretch lg:gap-20;
+    @apply z-10 absolute inset-0 lg:items-stretch content-start gap-10 sm:gap-5 lg:gap-20 grid lg:grid-rows-[1fr] mx-auto px-6 sm:px-12 lg:px-16 py-10 max-w-7xl text-white;
   }
 
   @media (min-width: 1024px) {
@@ -298,73 +303,62 @@ Home page — title
 @layer components {
   .home-title {
     max-width: 32rem;
-    @apply min-w-0 text-left;
+    @apply min-w-0 text-left text-pink-700/80;
   }
 
   .home-title__greetings {
-    @apply text-xl font-semibold tracking-wide text-white/80;
+    @apply text-2xl font-semibold tracking-wide
+    /*text-pink-500/80*/
+    ;
   }
 
   .home-title__heading {
-    @apply text-4xl font-bold leading-tight uppercase sm:text-4xl lg:text-5xl;
+    @apply font-bold text-4xl sm:text-4xl lg:text-5xl uppercase leading-tight
+    /*text-pink-500/80*/
+    ;
   }
 
   .home-title__subheading {
-    @apply mt-2 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl;
+    @apply mt-2 font-semibold text-2xl sm:text-3xl lg:text-4xl leading-tight;
+  }
+
+  .home-title__image {
+    @apply w-full h-full object-cover aspect-[16/11];
   }
 }
 
 /*
 ==========================================================================
-Home page — news bulletin
+Home page — News bulletin
 ==========================================================================
 */
 
 @layer components {
   .home-newsbulletin {
-    @apply max-w-xl self-stretch border-l border-white/60 pl-5 text-left sm:pl-6 lg:h-full lg:min-h-full lg:max-w-none;
+    @apply relative flex flex-col self-stretch pl-5 sm:pl-6 lg:max-w-none max-w-xl text-left;
   }
 
   .home-newsbulletin__title {
-    @apply text-xl font-semibold uppercase tracking-wide text-white/80 sm:text-2xl;
+    @apply shrink-0 text-xl font-semibold uppercase tracking-wide text-white/80 sm:text-2xl;
   }
 
   .home-newsbulletin__content {
-    @apply my-3 space-y-4 overflow-y-auto pr-2;
-    max-height: 24rem;
-
-    /* Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(4, 255, 0, 0.5) transparent;
+    @apply relative flex flex-row space-x-4 mt-4 pb-2 overflow-x-auto scrollbar-none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* Make links behave as block elements so space-y works */
-  .home-newsbulletin__content>a {
-    @apply block;
-  }
-
-  /* Chrome, Edge, Safari */
   .home-newsbulletin__content::-webkit-scrollbar {
-    width: 8px;
+    display: none;
   }
 
-  .home-newsbulletin__content::-webkit-scrollbar-track {
-    background: rgba(4, 255, 0, 0.05);
-    border-radius: 9999px;
-  }
-
-  .home-newsbulletin__content::-webkit-scrollbar-thumb {
-    background: rgba(4, 255, 0, 0.5);
-    border-radius: 9999px;
-    transition: background 0.3s ease;
-  }
-
-  .home-newsbulletin__content::-webkit-scrollbar-thumb:hover {
-    background: rgba(4, 255, 0, 0.8);
+  /* Make links behave cleanly in horizontal flex container filling container width */
+  .home-newsbulletin__content>a {
+    @apply w-full shrink-0;
   }
 
   .home-newsbulletin__item {
-    @apply rounded-2xl border border-white/10 bg-white/5 p-6;
+    @apply h-full rounded-2xl border border-white/10 bg-white/5 p-6;
     @apply shadow-lg backdrop-blur-md;
     @apply transition-all duration-300;
     @apply hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl;
@@ -379,7 +373,7 @@ Home page — news bulletin
   }
 
   .home-newsbulletin__item__title {
-    @apply mt-2 text-xl font-semibold leading-snug text-white sm:text-2xl;
+    @apply mt-2 font-semibold text-white text-xl sm:text-2xl leading-snug;
   }
 
   .home-newsbulletin__item__text {
@@ -407,7 +401,7 @@ About page — hero
   }
 
   .about-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-auto px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
   }
 
   .about-hero__text {
@@ -439,7 +433,7 @@ About page — mission / advisory sections
 
 @layer components {
   .about-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
   }
 
   .about-section--mission {
@@ -539,11 +533,13 @@ Projects page — styles
   }
 
   .projects-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-auto px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-7 max-w-7xl;
   }
 
   .projects-hero__text {
-    @apply justify-self-start p-4 sm:p-6 lg:p-8 max-w-3xl text-left;
+    @apply justify-self-start
+    /*p-4 sm:p-6 lg:p-8*/
+    max-w-3xl text-left;
   }
 
   .projects-hero__title {
@@ -551,27 +547,51 @@ Projects page — styles
   }
 
   .projects-hero__copy {
-    @apply mt-6 max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
+    @apply
+    /*mt-6*/
+    max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
   }
+
+  /* .site-header__background {
+    @apply -z-10 absolute inset-0;
+  }
+
+  .site-header__background::after {
+    content: "";
+    @apply absolute inset-0 bg-zinc-950/55;
+  }
+
+  .site-header__video {
+    @apply w-full h-full object-cover;
+  } */
 
   .projects-hero__media {
     @apply bg-zinc-950 shadow-sm border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden;
   }
+
+  /* .projects-hero__media {
+    @apply -z-10 absolute inset-0;
+  } */
+
+  /* .projects-hero__media::after {
+    content: "";
+    @apply absolute inset-0 bg-zinc-950/20;
+  } */
 
   .projects-hero__image {
     @apply aspect-[16/11] h-full w-full object-cover;
   }
 
   .projects-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
   }
 
   .projects-section--current {
-    @apply border-b border-zinc-200 dark:border-zinc-800;
+    @apply border-zinc-200 dark:border-zinc-800 border-b;
   }
 
   .projects-section--past {
-    @apply border-t border-zinc-200 dark:border-zinc-800;
+    @apply border-zinc-200 dark:border-zinc-800 border-t;
   }
 
   .projects-section__header {
@@ -595,19 +615,19 @@ Projects page — styles
   }
 
   .project-card__meta {
-    @apply flex items-center justify-between w-full;
+    @apply flex justify-between items-center w-full;
   }
 
   .project-card__category {
-    @apply text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400;
+    @apply font-medium text-zinc-500 dark:text-zinc-400 text-xs uppercase tracking-widest;
   }
 
   .project-card__title {
-    @apply mt-2 text-xl font-semibold text-zinc-950 dark:text-white;
+    @apply mt-2 font-semibold text-zinc-950 dark:text-white text-xl;
   }
 
   .project-card__description {
-    @apply mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300;
+    @apply mt-2 text-zinc-600 dark:text-zinc-300 text-sm leading-6;
   }
 
   .project-card__tags {
@@ -615,13 +635,13 @@ Projects page — styles
   }
 
   .project-card__tag {
-    @apply inline-flex items-center rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300;
+    @apply inline-flex items-center bg-zinc-50 dark:bg-zinc-900 px-2.5 py-0.5 border border-zinc-200 dark:border-zinc-800 rounded-md font-medium text-zinc-600 dark:text-zinc-300 text-xs;
   }
 }
 
 /*
 ==========================================================================
-Verticlas page — styles
+Verticals page — styles
 ==========================================================================
 */
 
@@ -639,7 +659,7 @@ Verticlas page — styles
   }
 
   .verticals-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-auto px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
   }
 
   .verticals-hero__text {
@@ -663,7 +683,7 @@ Verticlas page — styles
   }
 
   .verticals-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl border-b border-zinc-200 dark:border-zinc-800;
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 border-zinc-200 dark:border-zinc-800 border-b max-w-7xl;
   }
 
   .verticals-section__header {
@@ -675,7 +695,7 @@ Verticlas page — styles
   }
 
   .verticals-section__subtitle {
-    @apply mt-2 text-sm font-semibold text-zinc-600 dark:text-zinc-400;
+    @apply mt-2 font-semibold text-zinc-600 dark:text-zinc-400 text-sm;
   }
 
   .verticals-section__body {
@@ -683,7 +703,7 @@ Verticlas page — styles
   }
 
   .verticals-section__description {
-    @apply text-base leading-7 text-zinc-600 dark:text-zinc-300;
+    @apply text-zinc-600 dark:text-zinc-300 text-base leading-7;
   }
 
   .verticals-section__focus {
@@ -691,7 +711,7 @@ Verticlas page — styles
   }
 
   .verticals-section__subheading {
-    @apply text-xs font-semibold uppercase text-zinc-950 dark:text-white mb-3;
+    @apply mb-3 font-semibold text-zinc-950 dark:text-white text-xs uppercase;
   }
 
   .verticals-focus-list {
@@ -707,7 +727,7 @@ Verticlas page — styles
   }
 
   .verticals-focus-list__text {
-    @apply text-sm leading-6 text-zinc-600 dark:text-zinc-300;
+    @apply text-zinc-600 dark:text-zinc-300 text-sm leading-6;
   }
 
   .verticals-section__tools {
@@ -719,7 +739,7 @@ Verticlas page — styles
   }
 
   .verticals-tools-grid__badge {
-    @apply inline-flex items-center rounded-md border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300;
+    @apply inline-flex items-center bg-zinc-50 dark:bg-zinc-900 px-3 py-1 border border-zinc-200 dark:border-zinc-800 rounded-md font-medium text-zinc-600 dark:text-zinc-300 text-xs;
   }
 }
 
@@ -730,99 +750,99 @@ Join Us page — styles
 */
 
 @layer components {
-  .joinus-page {
+  .join-us-page {
     @apply bg-white dark:bg-zinc-950 text-zinc-950 dark:text-white;
   }
 
-  .joinus-page__label {
+  .join-us-page__label {
     @apply font-semibold text-zinc-500 dark:text-zinc-400 text-sm uppercase tracking-wide;
   }
 
-  .joinus-hero {
+  .join-us-hero {
     @apply border-b border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/30;
   }
 
-  .joinus-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-auto px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+  .join-us-hero__content {
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
   }
 
-  .joinus-hero__text {
+  .join-us-hero__text {
     @apply justify-self-start p-4 sm:p-6 lg:p-8 max-w-3xl text-left;
   }
 
-  .joinus-hero__title {
+  .join-us-hero__title {
     @apply mt-4 max-w-4xl font-semibold text-zinc-950 dark:text-white text-4xl sm:text-5xl tracking-tight;
   }
 
-  .joinus-hero__copy {
+  .join-us-hero__copy {
     @apply mt-6 max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
   }
 
-  .joinus-hero__media {
+  .join-us-hero__media {
     @apply bg-zinc-950 shadow-sm border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden;
   }
 
-  .joinus-hero__image {
+  .join-us-hero__image {
     @apply aspect-[16/11] h-full w-full object-cover;
   }
 
-  .joinus-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+  .join-us-section {
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
   }
 
-  .joinus-section--process {
-    @apply border-b border-zinc-200 dark:border-zinc-800;
+  .join-us-section--process {
+    @apply border-zinc-200 dark:border-zinc-800 border-b;
   }
 
-  .joinus-section--apply {
-    @apply border-t border-zinc-200 dark:border-zinc-800;
+  .join-us-section--apply {
+    @apply border-zinc-200 dark:border-zinc-800 border-t;
   }
 
-  .joinus-section__header {
+  .join-us-section__header {
     @apply max-w-md;
   }
 
-  .joinus-section__title {
+  .join-us-section__title {
     @apply mt-3 font-semibold text-zinc-950 dark:text-white text-2xl sm:text-3xl leading-tight;
   }
 
-  .joinus-section__body {
+  .join-us-section__body {
     @apply space-y-5 text-zinc-600 dark:text-zinc-300 text-base leading-7;
   }
 
-  .joinus-section__description {
-    @apply text-base leading-7 text-zinc-600 dark:text-zinc-300;
+  .join-us-section__description {
+    @apply text-zinc-600 dark:text-zinc-300 text-base leading-7;
   }
 
-  .joinus-steps {
+  .join-us-steps {
     @apply gap-4 grid;
   }
 
-  .joinus-steps__item {
+  .join-us-steps__item {
     @apply flex gap-4 rounded-lg border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40;
   }
 
-  .joinus-steps__marker {
+  .join-us-steps__marker {
     @apply bg-zinc-950 dark:bg-white mt-2 rounded-full w-2.5 h-2.5 shrink-0;
   }
 
-  .joinus-steps__content {
+  .join-us-steps__content {
     @apply min-w-0;
   }
 
-  .joinus-steps__title {
-    @apply text-base font-semibold text-zinc-950 dark:text-white;
+  .join-us-steps__title {
+    @apply font-semibold text-zinc-950 dark:text-white text-base;
   }
 
-  .joinus-steps__description {
-    @apply mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-300;
+  .join-us-steps__description {
+    @apply mt-1 text-zinc-600 dark:text-zinc-300 text-sm leading-6;
   }
 
-  .joinus-section__cta {
+  .join-us-section__cta {
     @apply mt-6;
   }
 
-  .joinus-button {
+  .join-us-button {
     @apply inline-flex items-center rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-950 shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800/80;
   }
 }
@@ -847,7 +867,7 @@ Socials page — styles
   }
 
   .socials-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-auto px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
   }
 
   .socials-hero__text {
@@ -871,11 +891,11 @@ Socials page — styles
   }
 
   .socials-section {
-    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-auto px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] mx-2 px-2 sm:px-4 lg:px-5 py-14 max-w-7xl;
   }
 
   .socials-section--channels {
-    @apply border-b border-zinc-200 dark:border-zinc-800;
+    @apply border-zinc-200 dark:border-zinc-800 border-b;
   }
 
   .socials-section__header {
@@ -903,15 +923,15 @@ Socials page — styles
   }
 
   .social-card__name {
-    @apply text-base font-semibold text-zinc-950 dark:text-white;
+    @apply font-semibold text-zinc-950 dark:text-white text-base;
   }
 
   .social-card__handle {
-    @apply text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400;
+    @apply font-medium text-zinc-500 dark:text-zinc-400 text-xs uppercase tracking-widest;
   }
 
   .social-card__description {
-    @apply mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300;
+    @apply mt-2 text-zinc-600 dark:text-zinc-300 text-sm leading-6;
   }
 
   .social-card__link {

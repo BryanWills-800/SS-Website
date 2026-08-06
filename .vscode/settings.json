@@ -8,7 +8,17 @@
     "piny.project_settings": {
         "open-pages": [
             "pinyfakepage.html"
-        ]
+        ],
+        "urls": {
+            "pinyfakepage.html": {
+                "open-page-views": [
+                    {
+                        "w": 718,
+                        "h": 0
+                    }
+                ]
+            }
+        }
     },
     "css.lint.unknownAtRules": "ignore"
 }

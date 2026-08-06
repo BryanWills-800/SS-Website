@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ImageTextButton from "./ImageTextButtons";
 
 interface ProjectItem {
   id: string;
@@ -100,18 +101,29 @@ export default function ProjectsPage() {
             <h1 id="projects-hero-title" className="projects-hero__title">
               Our Projects
             </h1>
+            {/* <p className="projects-hero__copy">
+              Explore the hardware designs, embedded systems, silicon research, and digital core pipelines engineered by members of Silicon Society.
+            </p> */}
+            <ImageTextButton />
+          </div>
+          <div
+            className="projects-hero__media"
+            style={{
+              backgroundImage: `url('/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
             <p className="projects-hero__copy">
               Explore the hardware designs, embedded systems, silicon research, and digital core pipelines engineered by members of Silicon Society.
             </p>
-          </div>
-          <div className="projects-hero__media">
-            <Image
+            {/* <Image
               className="projects-hero__image"
               src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
               alt="Processor chip design"
               width={640}
               height={420}
-            />
+            /> */}
           </div>
         </div>
       </section>

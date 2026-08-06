@@ -19,7 +19,7 @@ const recruitmentSteps: RecruitmentStep[] = [
   {
     id: "step-2",
     stepNumber: 2,
-    title: "Step 2: Technical Taskround",
+    title: "Step 2: Technical Task Round",
     description:
       "Solve a foundational problem set or mini-project based on logic design, circuit analysis, or basic programming depending on your chosen division.",
   },
@@ -34,34 +34,34 @@ const recruitmentSteps: RecruitmentStep[] = [
 
 function RecruitmentStepItem({ step }: { step: RecruitmentStep }) {
   return (
-    <div className="joinus-steps__item">
-      <span className="joinus-steps__marker" aria-hidden="true" />
-      <div className="joinus-steps__content">
-        <h3 className="joinus-steps__title">{step.title}</h3>
-        <p className="joinus-steps__description">{step.description}</p>
+    <div className="join-us-steps__item">
+      <span className="join-us-steps__marker" aria-hidden="true" />
+      <div className="join-us-steps__content">
+        <h3 className="join-us-steps__title">{step.title}</h3>
+        <p className="join-us-steps__description">{step.description}</p>
       </div>
     </div>
   );
 }
 
-export default function JoinUsPage() {
+export default function joinUsPage() {
   return (
-    <div className="joinus-page">
+    <div className="join-us-page">
       {/* Join Us Hero */}
-      <section className="joinus-hero" aria-labelledby="join-hero-title">
-        <div className="joinus-hero__content">
-          <div className="joinus-hero__text">
-            <p className="joinus-page__label">Recruitment & Membership</p>
-            <h1 id="join-hero-title" className="joinus-hero__title">
+      <section className="join-us-hero" aria-labelledby="join-hero-title">
+        <div className="join-us-hero__content">
+          <div className="join-us-hero__text">
+            <p className="join-us-page__label">Recruitment & Membership</p>
+            <h1 id="join-hero-title" className="join-us-hero__title">
               Join Silicon Society
             </h1>
-            <p className="joinus-hero__copy">
+            <p className="join-us-hero__copy">
               Become part of BITS Pilani&apos;s premier student organization dedicated to semiconductors, hardware architecture, embedded systems, and silicon research.
             </p>
           </div>
-          <div className="joinus-hero__media">
+          <div className="join-us-hero__media">
             <Image
-              className="joinus-hero__image"
+              className="join-us-hero__image"
               src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
               alt="Circuit design lab"
               width={640}
@@ -72,16 +72,16 @@ export default function JoinUsPage() {
       </section>
 
       {/* Recruitment Process */}
-      <section id="process" className="joinus-section joinus-section--process" aria-labelledby="process-title">
-        <div className="joinus-section__header">
-          <p className="joinus-page__label">How to Apply</p>
-          <h2 id="process-title" className="joinus-section__title">
+      <section id="process" className="join-us-section join-us-section--process" aria-labelledby="process-title">
+        <div className="join-us-section__header">
+          <p className="join-us-page__label">How to Apply</p>
+          <h2 id="process-title" className="join-us-section__title">
             Recruitment Process
           </h2>
         </div>
 
-        <div className="joinus-section__body">
-          <div className="joinus-steps">
+        <div className="join-us-section__body">
+          <div className="join-us-steps">
             {recruitmentSteps.map((step) => (
               <RecruitmentStepItem key={step.id} step={step} />
             ))}
@@ -90,24 +90,24 @@ export default function JoinUsPage() {
       </section>
 
       {/* Application Form Info Section */}
-      <section id="apply" className="joinus-section joinus-section--apply" aria-labelledby="apply-title">
-        <div className="joinus-section__header">
-          <p className="joinus-page__label">Applications Open</p>
-          <h2 id="apply-title" className="joinus-section__title">
+      <section id="apply" className="join-us-section join-us-section--apply" aria-labelledby="apply-title">
+        <div className="join-us-section__header">
+          <p className="join-us-page__label">Applications Open</p>
+          <h2 id="apply-title" className="join-us-section__title">
             Ready to Build Hardware?
           </h2>
         </div>
 
-        <div className="joinus-section__body">
-          <p className="joinus-section__description">
+        <div className="join-us-section__body">
+          <p className="join-us-section__description">
             Recruitment drives are held at the beginning of each semester. Whether you are a beginner eager to learn digital logic or an experienced student working on chip design, all interested BITSians are encouraged to apply!
           </p>
-          <div className="joinus-section__cta">
+          <div className="join-us-section__cta">
             <a
               href="https://forms.google.com"
               target="_blank"
               rel="noreferrer"
-              className="joinus-button"
+              className="join-us-button"
             >
               Fill Recruitment Interest Form →
             </a>

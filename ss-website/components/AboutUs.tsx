@@ -50,9 +50,12 @@ export default function AboutUs() {
               About Us
             </h2>
             <p className="about-hero__copy">
-              Silicon Society exists to bridge the gap between academic theory
-              and the core industry pipelines that shape modern electronics,
-              semiconductors, embedded systems, and applied research.
+              {/* Silicon Society BITS Pilani
+              Empowering the Next Generation of Hardware & Innovation Leaders */}
+              Silicon Society BITS Pilani is a student-led community focused on technology, design, and innovation in the field of semiconductors and hardware systems.
+              We aim to cultivate a culture of exploration, collaboration, and technical excellence by providing students with a platform to learn, build, and innovate beyond the boundaries of academic coursework.
+              Through workshops, technical sessions, hands-on projects, and industry-oriented initiatives, we encourage students to engage with emerging technologies and develop practical skills in hardware design and innovation.
+
             </p>
           </div>
 

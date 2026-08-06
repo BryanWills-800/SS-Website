@@ -11,6 +11,7 @@ export default function Header() {
         <video className="site-header__video" autoPlay loop muted playsInline>
           <source src="/video2.mp4" type="video/mp4" />
         </video>
+        {/* <Image className="site-header__video" src="/video3.gif" alt="Silicon Society background" width={1920} height={1080} /> */}
       </div>
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
