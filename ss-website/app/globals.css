@@ -1,11 +1,7 @@
 @import "tailwindcss";
 
 
-/*
-==========================================================================
-Main theme variables
-==========================================================================
-*/
+/* Main theme variables */
 
 :root {
   --background: #ffffff;
@@ -32,11 +28,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-==========================================================================
-Global Scrollbar
-==========================================================================
-*/
+/* Global Scrollbar */
 
 html {
   scroll-behavior: smooth;
@@ -61,11 +53,7 @@ html::-webkit-scrollbar-thumb:hover {
   background: rgba(4, 255, 0, 0.8);
 }
 
-/*
-==========================================================================
-App shell
-==========================================================================
-*/
+/* App shell */
 
 @layer components {
   .app-html {
@@ -81,11 +69,7 @@ App shell
   }
 }
 
-/*
-==========================================================================
-Site header
-==========================================================================
-*/
+/* Site header */
 
 @layer components {
   .site-header {
@@ -138,11 +122,7 @@ Site header
   }
 }
 
-/*
-==========================================================================
-Site nav
-==========================================================================
-*/
+/* Site nav */
 
 @layer components {
   .site-nav {
@@ -196,11 +176,7 @@ Site nav
   }
 }
 
-/*
-==========================================================================
-Site footer
-==========================================================================
-*/
+/* Site footer */
 
 @layer components {
   .site-footer {
@@ -264,11 +240,7 @@ Site footer
   }
 }
 
-/*
-==========================================================================
-Home page — hero / background video
-==========================================================================
-*/
+/* Home page — hero / background video */
 
 @layer components {
   .home-page {
@@ -295,9 +267,9 @@ Home page — hero / background video
 }
 
 /*
-==========================================================================
+
 Home page — title
-==========================================================================
+
 */
 
 @layer components {
@@ -327,11 +299,7 @@ Home page — title
   }
 }
 
-/*
-==========================================================================
-Home page — News bulletin
-==========================================================================
-*/
+/* Home page — News bulletin */
 
 @layer components {
   .home-newsbulletin {
@@ -381,11 +349,7 @@ Home page — News bulletin
   }
 }
 
-/*
-==========================================================================
-About page — hero
-==========================================================================
-*/
+/* About page — hero */
 
 @layer components {
   .about-page {
@@ -425,11 +389,7 @@ About page — hero
   }
 }
 
-/*
-==========================================================================
-About page — mission / advisory sections
-==========================================================================
-*/
+/* About page — mission / advisory sections */
 
 @layer components {
   .about-section {
@@ -457,11 +417,7 @@ About page — mission / advisory sections
   }
 }
 
-/*
-==========================================================================
-About page — leadership grid
-==========================================================================
-*/
+/* About page — leadership grid */
 
 @layer components {
   .leadership-grid {
@@ -493,11 +449,7 @@ About page — leadership grid
   }
 }
 
-/*
-==========================================================================
-About page — advisory list
-==========================================================================
-*/
+/* About page — advisory list */
 
 @layer components {
   .advisory-list {
@@ -513,9 +465,7 @@ About page — advisory list
   }
 }
 
-/*
-Projects page — styles
-*/
+/* Projects page — styles */
 
 @layer components {
   .projects-page {
@@ -531,13 +481,11 @@ Projects page — styles
   }
 
   .projects-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-7 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
   }
 
   .projects-hero__text {
-    @apply justify-self-start
-    /*p-4 sm:p-6 lg:p-8*/
-    max-w-3xl text-left;
+    @apply justify-self-start p-4 sm:p-6 lg:p-8 max-w-3xl text-left;
   }
 
   .projects-hero__title {
@@ -545,36 +493,12 @@ Projects page — styles
   }
 
   .projects-hero__copy {
-    @apply
-    /*mt-6*/
-    max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
+    @apply mt-6 max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
   }
-
-  /* .site-header__background {
-    @apply -z-10 absolute inset-0;
-  }
-
-  .site-header__background::after {
-    content: "";
-    @apply absolute inset-0 bg-zinc-950/55;
-  }
-
-  .site-header__video {
-    @apply w-full h-full object-cover;
-  } */
 
   .projects-hero__media {
     @apply bg-zinc-950 shadow-sm border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden;
   }
-
-  /* .projects-hero__media {
-    @apply -z-10 absolute inset-0;
-  } */
-
-  /* .projects-hero__media::after {
-    content: "";
-    @apply absolute inset-0 bg-zinc-950/20;
-  } */
 
   .projects-hero__image {
     @apply aspect-[16/11] h-full w-full object-cover;
@@ -637,11 +561,7 @@ Projects page — styles
   }
 }
 
-/*
-==========================================================================
-Verticals page — styles
-==========================================================================
-*/
+/* Verticals page — styles */
 
 @layer components {
   .verticals-page {
@@ -741,9 +661,7 @@ Verticals page — styles
   }
 }
 
-/*
-Join Us page — styles
-*/
+/* Join Us page — styles */
 
 @layer components {
   .join-us-page {
@@ -843,9 +761,7 @@ Join Us page — styles
   }
 }
 
-/*
-Socials page — styles
-*/
+/* Socials page — styles */
 
 @layer components {
   .socials-page {

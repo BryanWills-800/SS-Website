@@ -62,7 +62,8 @@ export default function joinUsPage() {
           <div className="join-us-hero__media">
             <Image
               className="join-us-hero__image"
-              src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
+              src="/image_chip.avif"
+              loading="eager"
               alt="Circuit design lab"
               width={640}
               height={420}

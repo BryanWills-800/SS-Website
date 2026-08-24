@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const aboutHeroImage =
-  "/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif";
+  "/image_chip.avif";
 
 const leadership = [
   {
