@@ -31,6 +31,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This app is pre-configured for Vercel in `vercel.json`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Framework: `nextjs`
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Dev command: `npm run dev`
+
+Because this project is inside a monorepo-style folder, set Vercel Project **Root Directory** to `ss-website` when importing the repository.
+
+Then:
+
+1. Import `BryanWills-800/SS-Website` in Vercel.
+2. Set Root Directory to `ss-website`.
+3. Confirm/add environment variables if needed.
+4. Deploy.
