@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const SWAP_DELAY_MS = 140;
 
 export type TestImageTextButtonsItem = {
     id: string;
@@ -27,58 +29,93 @@ export default function TestImageTextButtons({
 }: TestImageTextButtonsProps) {
     const [selectedContent, setSelectedContent] = useState<string | null>(null);
     const [previewContent, setPreviewContent] = useState<string | null>(null);
+    const swapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const activeContent = previewContent ?? selectedContent ?? "image";
     const selectedItem = items.find((item) => item.id === activeContent);
-    const toggleSelectedContent = (itemId: string) => {
-        setSelectedContent((current) => (current === itemId ? null : itemId));
+
+    const clearSwapTimer = () => {
+        if (!swapTimerRef.current) return;
+        clearTimeout(swapTimerRef.current);
+        swapTimerRef.current = null;
     };
 
-    return (
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 p-6">
-            <div className="flex flex-col justify-center items-start space-y-2">
-                <h2 className="mb-2 font-bold text-xl">
-                    {heading}
-                </h2>
+    const scheduleSwap = (updateFn: () => void) => {
+        clearSwapTimer();
+        swapTimerRef.current = setTimeout(() => {
+            updateFn();
+            swapTimerRef.current = null;
+        }, SWAP_DELAY_MS);
+    };
 
-                {items.map((item) => (
-                    <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => toggleSelectedContent(item.id)}
-                        onMouseEnter={() => setPreviewContent(item.id)}
-                        onMouseLeave={() => setPreviewContent(null)}
-                        onFocus={() => setPreviewContent(item.id)}
-                        onBlur={() => setPreviewContent(null)}
-                        className={`px-4 py-2 rounded text-white transition-colors ${activeContent === item.id
-                            ? "bg-green-600 font-semibold"
-                            : "bg-green-500 hover:bg-green-600"
-                            }`}
-                    >
-                        {item.buttonLabel}
-                    </button>
-                ))}
+    const toggleSelectedContent = (itemId: string) => {
+        scheduleSwap(() => {
+            setSelectedContent((current) => (current === itemId ? null : itemId));
+        });
+    };
+
+    useEffect(() => {
+        return () => {
+            clearSwapTimer();
+        };
+    }, []);
+
+    return (
+        <div className="test-image-buttons">
+            <div className="test-image-buttons__controls">
+                <div className="test-image-buttons__eyebrow">Content index</div>
+                <h2 className="test-image-buttons__heading">{heading}</h2>
+                <p className="test-image-buttons__instruction">
+                    Hover to preview. Select a module to pin its details.
+                </p>
+
+                <div className="test-image-buttons__list">
+                    {items.map((item, index) => (
+                        <button
+                            key={item.id}
+                            type="button"
+                            aria-pressed={selectedContent === item.id}
+                            onClick={() => toggleSelectedContent(item.id)}
+                            onMouseEnter={() => scheduleSwap(() => setPreviewContent(item.id))}
+                            onMouseLeave={() => scheduleSwap(() => setPreviewContent(null))}
+                            onFocus={() => scheduleSwap(() => setPreviewContent(item.id))}
+                            onBlur={() => scheduleSwap(() => setPreviewContent(null))}
+                            className={`group test-image-buttons__button ${activeContent === item.id
+                                ? "test-image-buttons__button--active"
+                                : ""
+                                }`}
+                        >
+                            <span className="test-image-buttons__button-number">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span>{item.buttonLabel}</span>
+                            <span className="test-image-buttons__button-arrow" aria-hidden="true">↗</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
-            <div className="flex justify-center items-center w-full aspect-[640/420]">
+            <div className="test-image-buttons__preview">
                 {activeContent === "image" && (
                     <Image
                         src={defaultImageSrc}
                         alt={defaultImageAlt}
                         width={640}
                         height={420}
-                        className="w-full h-full object-contain"
+                        className="test-image-buttons__image"
+                        loading="eager"
+                        priority
                     />
                 )}
 
                 {selectedItem && (
-                    <div className="flex flex-col justify-center items-start p-6 border-2 border-red-500 w-full h-full">
-                        <span className="font-medium text-zinc-500 text-xs uppercase tracking-wider">{selectedItem.metaText}</span>
-                        <h3 className="mt-1 font-bold text-xl">{selectedItem.title}</h3>
-                        <p className="mt-2 text-zinc-700 dark:text-zinc-300 text-base">{selectedItem.description}</p>
-                        <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="test-image-buttons__content">
+                        <span className="test-image-buttons__meta">{selectedItem.metaText}</span>
+                        <h3 className="test-image-buttons__title">{selectedItem.title}</h3>
+                        <p className="test-image-buttons__description">{selectedItem.description}</p>
+                        <div className="test-image-buttons__tags">
                             {selectedItem.tags.map((tag) => (
-                                <span key={tag} className="bg-zinc-100 dark:bg-zinc-800 px-2 py-1 border border-zinc-200 dark:border-zinc-700 rounded text-xs">{tag}</span>
+                                <span key={tag} className="test-image-buttons__tag">{tag}</span>
                             ))}
                         </div>
                     </div>

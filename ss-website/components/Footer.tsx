@@ -11,14 +11,14 @@ export default function Footer() {
       title: "About the Society",
       links: [
         { label: "About Us", href: "#about-us" },
-        { label: "Join Us", href: "#join-us" },
+        { label: "Join Us", href: "/join-us" },
       ],
     },
     {
       title: "Contributions",
       links: [
-        { label: "Verticals", href: "#verticals" },
-        { label: "Projects", href: "#projects" },
+        { label: "Verticals", href: "/verticals" },
+        { label: "Projects", href: "/projects" },
       ],
     },
     {

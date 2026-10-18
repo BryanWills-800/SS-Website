@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface RecruitmentStep {
   id: string;
@@ -12,23 +13,30 @@ const recruitmentSteps: RecruitmentStep[] = [
   {
     id: "step-1",
     stepNumber: 1,
-    title: "Step 1: Interest Form",
+    title: "Form Submission",
     description:
-      "Fill out the online application form specifying your preferred technical vertical (Digital, Analog, or Research).",
+      "Submit the online application, indicating your preferred technical track — Digital or Analog.",
   },
   {
     id: "step-2",
     stepNumber: 2,
-    title: "Step 2: Technical Task Round",
+    title: "Orientation",
     description:
-      "Solve a foundational problem set or mini-project based on logic design, circuit analysis, or basic programming depending on your chosen division.",
+      "Join the orientation session to understand the program structure, expectations, and available resources.",
   },
   {
     id: "step-3",
     stepNumber: 3,
-    title: "Step 3: Peer Discussion & Interview",
+    title: "Task",
     description:
-      "A informal technical interview and interaction with domain leads to discuss your interests, project ideas, and enthusiasm.",
+      "View YouTube lectures covering fundamental concepts needed for the society.",
+  },
+  {
+    id: "step-4",
+    stepNumber: 4,
+    title: "Group Discussions",
+    description:
+      "Do GDs from your seniors relevent to the material that is provided in the task",
   },
 ];
 
@@ -37,7 +45,7 @@ function RecruitmentStepItem({ step }: { step: RecruitmentStep }) {
     <div className="join-us-steps__item">
       <span className="join-us-steps__marker" aria-hidden="true" />
       <div className="join-us-steps__content">
-        <h3 className="join-us-steps__title">{step.title}</h3>
+        <h3 className="join-us-steps__title">Step {step.stepNumber}: {step.title}</h3>
         <p className="join-us-steps__description">{step.description}</p>
       </div>
     </div>
@@ -115,6 +123,27 @@ export default function joinUsPage() {
           </div>
         </div>
       </section>
+
+      {/* Learning Resources */}
+
+      {false &&
+        <section id="resources" className="join-us-section join-us-section--resources" aria-labelledby="resources-title">
+          <div className="join-us-section__header">
+            <p className="join-us-page__label">Learning Resources</p>
+            <h2 id="resources-title" className="join-us-section__title">
+              Supplementary Courses
+            </h2>
+          </div>
+          <div className="join-us-section__body">
+            <p className="join-us-section__description">
+              Explore curated video courses to build a solid foundation in digital design, VLSI, and electronic devices.
+            </p>
+            <Link href="/learning-resources" className="join-us-button">
+              View Courses →
+            </Link>
+          </div>
+        </section>
+      }
     </div>
   );
 }

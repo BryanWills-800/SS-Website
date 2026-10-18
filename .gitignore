@@ -1,6 +1,7 @@
 # For Now
 .github
 .vscode
+build
 
 # Logs
 logs

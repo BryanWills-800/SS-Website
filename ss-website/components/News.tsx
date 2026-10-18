@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 type NewsItem = {
     date: string;
@@ -47,11 +49,78 @@ function NewsItemCard({ date, title, text, link }: NewsItem) {
 }
 
 export default function News() {
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(false);
+
+    const updateScrollState = useCallback(() => {
+        const content = contentRef.current;
+        if (!content) return;
+
+        setCanScrollLeft(content.scrollLeft > 0);
+        setCanScrollRight(
+            content.scrollLeft + content.clientWidth < content.scrollWidth - 1,
+        );
+    }, []);
+
+    useEffect(() => {
+        const content = contentRef.current;
+        if (!content) return;
+
+        updateScrollState();
+        content.addEventListener("scroll", updateScrollState, { passive: true });
+        window.addEventListener("resize", updateScrollState);
+
+        return () => {
+            content.removeEventListener("scroll", updateScrollState);
+            window.removeEventListener("resize", updateScrollState);
+        };
+    }, [updateScrollState]);
+
+    const scrollByCard = (direction: "left" | "right") => {
+        const content = contentRef.current;
+        const firstCard = content?.firstElementChild;
+        if (!content || !firstCard) return;
+
+        const nextCard = firstCard.nextElementSibling;
+        const gap = nextCard
+            ? Number.parseFloat(getComputedStyle(nextCard).marginLeft) || 0
+            : 0;
+        const distance = firstCard.getBoundingClientRect().width + gap;
+
+        content.scrollBy({
+            left: direction === "right" ? distance : -distance,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <div className="home-newsbulletin">
-            <p className="home-newsbulletin__title">News Bulletin</p>
+            <div className="home-newsbulletin__header">
+                <p className="home-newsbulletin__title">News Bulletin</p>
+                <div className="home-newsbulletin__controls">
+                    <button
+                        type="button"
+                        className="home-newsbulletin__arrow"
+                        aria-label="Show previous news bulletin"
+                        disabled={!canScrollLeft}
+                        onClick={() => scrollByCard("left")}
+                    >
+                        <span aria-hidden="true">&larr;</span>
+                    </button>
+                    <button
+                        type="button"
+                        className="home-newsbulletin__arrow"
+                        aria-label="Show next news bulletin"
+                        disabled={!canScrollRight}
+                        onClick={() => scrollByCard("right")}
+                    >
+                        <span aria-hidden="true">&rarr;</span>
+                    </button>
+                </div>
+            </div>
 
-            <div className="home-newsbulletin__content">
+            <div ref={contentRef} className="home-newsbulletin__content">
                 {bulletins.map((item) => (
                     <NewsItemCard key={item.title + item.date} {...item} />
                 ))}

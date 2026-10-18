@@ -295,7 +295,7 @@ Home page — title
   }
 
   .home-title__image {
-    @apply w-full h-full object-cover aspect-[16/11];
+    @apply w-full h-full object-cover aspect-[16/11] border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden shadow-sm max-h-[300px];
   }
 }
 
@@ -310,8 +310,32 @@ Home page — title
     @apply shrink-0 text-xl font-semibold uppercase tracking-wide text-white/80 sm:text-2xl;
   }
 
+  .home-newsbulletin__header {
+    @apply flex justify-between items-center gap-3;
+  }
+
+  .home-newsbulletin__controls {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .home-newsbulletin__arrow {
+    @apply inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/20 bg-white/10 text-white/90 transition-colors;
+    @apply hover:bg-white/20 hover:text-white;
+  }
+
+  .home-newsbulletin__arrow:focus-visible {
+    @apply outline-none ring-2 ring-green-400 ring-offset-2 ring-offset-zinc-950;
+  }
+
+  .home-newsbulletin__arrow:disabled {
+    @apply opacity-40 cursor-not-allowed hover:bg-white/10 hover:text-white/90;
+  }
+
+
   .home-newsbulletin__content {
     @apply relative flex flex-row space-x-4 mt-4 pb-2 overflow-x-auto scrollbar-none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -323,13 +347,15 @@ Home page — title
   /* Make links behave cleanly in horizontal flex container filling container width */
   .home-newsbulletin__content>a {
     @apply w-full shrink-0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .home-newsbulletin__item {
     @apply h-full rounded-2xl border border-white/10 bg-white/5 p-6;
     @apply shadow-lg backdrop-blur-md;
     @apply transition-all duration-300;
-    @apply hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl;
+    @apply hover:bg-white/10 hover:shadow-xl;
   }
 
   .home-newsbulletin__item--active {
@@ -365,7 +391,7 @@ Home page — title
   }
 
   .about-hero__content {
-    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-16 sm:py-20 max-w-7xl;
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] mx-2 px-2 sm:px-4 lg:px-5 py-24 sm:py-28 max-w-7xl;
   }
 
   .about-hero__text {
@@ -846,5 +872,86 @@ Home page — title
 
   .social-card__link {
     @apply inline-flex mt-4 font-semibold text-zinc-950 dark:text-white text-sm decoration-zinc-300 hover:decoration-zinc-950 dark:decoration-zinc-600 dark:hover:decoration-white underline underline-offset-4 transition-colors;
+  }
+}
+
+
+/* Testing */
+
+@layer components {
+  .test-image-buttons {
+    @apply gap-10 grid grid-cols-1 md:grid-cols-2;
+  }
+
+  .test-image-buttons__controls {
+    @apply flex flex-col justify-center py-3 min-w-0;
+  }
+
+  .test-image-buttons__eyebrow {
+    @apply font-semibold text-[0.68rem] text-green-700 dark:text-green-400 uppercase tracking-[0.2em];
+  }
+
+  .test-image-buttons__heading {
+    @apply mt-2 font-semibold text-zinc-950 dark:text-white text-2xl tracking-tight;
+  }
+
+  .test-image-buttons__instruction {
+    @apply mt-2 max-w-xs text-zinc-500 dark:text-zinc-400 text-sm leading-6;
+  }
+
+  .test-image-buttons__list {
+    @apply flex flex-col gap-3 mt-7;
+  }
+
+  .test-image-buttons__button {
+    @apply inline-flex items-center gap-3 px-3 py-3 border border-zinc-200 hover:border-green-600 dark:border-zinc-800 dark:hover:border-green-500 rounded-md w-full font-medium text-zinc-700 hover:text-zinc-950 dark:hover:text-white dark:text-zinc-300 text-sm text-left transition-all;
+  }
+
+  .test-image-buttons__button:focus-visible {
+    @apply outline-none ring-2 ring-green-500 ring-offset-2 dark:ring-offset-zinc-950;
+  }
+
+  .test-image-buttons__button--active {
+    @apply border-green-600 bg-green-50 dark:border-green-500 dark:bg-green-950/30 font-semibold text-zinc-950 dark:text-white;
+  }
+
+  .test-image-buttons__button-number {
+    @apply font-mono text-zinc-400 dark:text-zinc-500 text-xs;
+  }
+
+  .test-image-buttons__button-arrow {
+    @apply ml-auto text-zinc-400 dark:group-hover:text-green-400 group-hover:text-green-600 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5;
+  }
+
+  .test-image-buttons__preview {
+    @apply relative flex flex-col bg-zinc-50 dark:bg-zinc-900/50 rounded-lg h-[23rem] sm:h-[25rem] overflow-hidden;
+  }
+
+  .test-image-buttons__image {
+    @apply flex-1 p-8 w-full h-full object-contain;
+  }
+
+  .test-image-buttons__content {
+    @apply flex flex-col justify-center items-start p-8 sm:p-10 h-full;
+  }
+
+  .test-image-buttons__meta {
+    @apply font-mono font-medium text-green-700 dark:text-green-400 text-xs uppercase tracking-widest;
+  }
+
+  .test-image-buttons__title {
+    @apply mt-2 font-semibold text-zinc-950 dark:text-white text-2xl tracking-tight;
+  }
+
+  .test-image-buttons__description {
+    @apply mt-3 max-w-2xl text-zinc-600 dark:text-zinc-300 text-base leading-7;
+  }
+
+  .test-image-buttons__tags {
+    @apply flex flex-wrap gap-2 mt-5;
+  }
+
+  .test-image-buttons__tag {
+    @apply bg-white dark:bg-zinc-950 px-2.5 py-1 border border-zinc-200 dark:border-zinc-700 rounded-sm font-mono text-zinc-600 dark:text-zinc-300 text-xs;
   }
 }
