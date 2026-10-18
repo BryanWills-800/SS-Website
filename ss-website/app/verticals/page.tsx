@@ -77,7 +77,8 @@ export default function VerticalsPage() {
           <div className="verticals-hero__media">
             <Image
               className="verticals-hero__image"
-              src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
+              src="/image_chip.avif"
+              loading="eager"
               alt="Silicon chip layout preview"
               width={640}
               height={420}

@@ -107,7 +107,8 @@ export default function ProjectsPage() {
           <div className="projects-hero__media">
             <Image
               className="projects-hero__image"
-              src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
+              src="/image_chip.avif"
+              loading="eager"
               alt="Processor chip design"
               width={640}
               height={420}

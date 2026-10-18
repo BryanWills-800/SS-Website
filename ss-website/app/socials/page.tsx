@@ -13,31 +13,31 @@ const socialPlatforms: SocialPlatform[] = [
   {
     name: "LinkedIn",
     handle: "Silicon Society - BITS Pilani",
-    description: "Follow our official page for organizational updates, industry partnerships, project showcases, and alumni networks.",
+    description: "Follow our official LinkedIn page for organizational updates, industry partnerships, project showcases, and alumni networks.",
     url: "https://www.linkedin.com/company/silicon-society-bits-pilani/",
     actionText: "Connect on LinkedIn",
   },
-  {
-    name: "GitHub",
-    handle: "@siliconsociety",
-    description: "Explore our open-source repositories, hardware RTL modules, embedded libraries, and research simulations.",
-    url: "https://github.com",
-    actionText: "View GitHub Repos",
-  },
-  {
-    name: "YouTube",
-    handle: "Silicon Society BITS",
-    description: "Watch recorded workshops, technical seminar series, guest lectures from semiconductor experts, and project demos.",
-    url: "https://youtube.com",
-    actionText: "Watch Channel",
-  },
-  {
-    name: "Instagram",
-    handle: "@siliconsociety_bitsp",
-    description: "Get a glimpse into society life, workshop teasers, campus events, and behind-the-scenes engineering highlights.",
-    url: "https://instagram.com",
-    actionText: "Follow on Instagram",
-  },
+  // {
+  //   name: "GitHub",
+  //   handle: "@siliconsociety",
+  //   description: "Explore our open-source repositories, hardware RTL modules, embedded libraries, and research simulations.",
+  //   url: "https://github.com",
+  //   actionText: "View GitHub Repos",
+  // },
+  // {
+  //   name: "YouTube",
+  //   handle: "Silicon Society BITS",
+  //   description: "Watch recorded workshops, technical seminar series, guest lectures from semiconductor experts, and project demos.",
+  //   url: "https://youtube.com",
+  //   actionText: "Watch Channel",
+  // },
+  // {
+  //   name: "Instagram",
+  //   handle: "@siliconsociety_bitsp",
+  //   description: "Get a glimpse into society life, workshop teasers, campus events, and behind-the-scenes engineering highlights.",
+  //   url: "https://instagram.com",
+  //   actionText: "Follow on Instagram",
+  // },
 ];
 
 export default function SocialsPage() {
@@ -58,7 +58,8 @@ export default function SocialsPage() {
           <div className="socials-hero__media">
             <Image
               className="socials-hero__image"
-              src="/processor-chip-circuit-board-with-copy-space-design_628331-1296.avif"
+              src="/image_chip.avif"
+              loading="eager"
               alt="Community banner"
               width={640}
               height={420}

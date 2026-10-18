@@ -3,21 +3,28 @@ import React from "react";
 
 const logoSrc = "/logo.jpeg";
 
+const LINKEDIN_LINK = "https://www.linkedin.com/company/silicon-society-bits-pilani/"
+
 export default function Footer() {
   const sections = [
     {
       title: "About the Society",
       links: [
         { label: "About Us", href: "#about-us" },
-        { label: "Verticals", href: "#verticals" },
-        { label: "Join Us", href: "#join-us" },
+        { label: "Join Us", href: "/join-us" },
       ],
     },
     {
       title: "Contributions",
       links: [
-        { label: "Projects", href: "#projects" },
-        // { label: "Events", href: "#events" },
+        { label: "Verticals", href: "/verticals" },
+        { label: "Projects", href: "/projects" },
+      ],
+    },
+    {
+      title: "Follow Us",
+      links: [
+        { label: "LinkedIn", href: LINKEDIN_LINK, active: false },
       ],
     },
   ];
@@ -35,15 +42,17 @@ export default function Footer() {
                   className="site-footer__logo"
                   src={logoSrc}
                   alt="Silicon Society logo"
-                  width={100}
-                  height={100}
+                  width={120}
+                  height={120}
                 />
               </div>
-              <span className="site-footer__brand-name">Silicon Society</span>
+              <div className="site-footer__brand-text">
+                <span className="site-footer__brand-name">Silicon Society - BITS Pilani</span>
+                <span className="site-footer__description">
+                  Empowering the Next Generation of Integrated Chip Design & VLSI Innovators
+                </span>
+              </div>
             </div>
-            <p className="site-footer__description">
-              Empowering the Next Generation of Integrated Chip Design & VLSI Innovators
-            </p>
           </div>
 
           <div className="site-footer__sections">
