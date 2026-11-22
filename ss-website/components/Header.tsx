@@ -13,7 +13,7 @@ export default function Header() {
         </video>
         {/* <Image className="site-header__video" src="/video3.gif" alt="Silicon Society background" width={1920} height={1080} /> */}
       </div>
-      <div className="site-header__inner">
+      <div className="site-header__inner container-page">
         <Link href="/" className="site-header__brand">
           <div className="site-header__mark">
             <Image

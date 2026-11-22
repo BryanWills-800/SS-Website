@@ -33,7 +33,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="site-footer__inner">
+      <div className="site-footer__inner container-page">
         <div className="site-footer__content">
           <div className="site-footer__summary">
             <div className="site-footer__brand">
@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="site-footer__sections">
             {sections.map((section) => (
               <div key={section.title} className="site-footer__section">
-                <h3 className="site-footer__heading">{section.title}</h3>
+                <h3 className="heading-mini">{section.title}</h3>
                 <ul className="site-footer__list">
                   {section.links.map((link) => (
                     <li key={link.label}>

@@ -1,0 +1,139 @@
+/*
+  ATOMS — small, single-purpose classes you stack on one element.
+
+    <article class="card flex gap-4">
+    <h3 class="heading-card mt-2 text-xl">
+
+  Rules of thumb:
+  - Atoms carry NO outer margin. Spacing between things is a one-off
+    decision, so add it with a Tailwind utility (mt-2, gap-4) in the JSX.
+  - Tailwind utilities always win over these classes (utilities layer >
+    components layer), so `heading-card text-xl` safely bumps the size.
+  - Variants use a `--modifier` class next to the base: `tag tag--lg`.
+  - If you're about to copy one of these into a new page-specific class,
+    reuse the atom instead.
+*/
+
+@layer components {
+  /* ---------- Layout ---------- */
+
+  /* Standard width + side padding shared by header, nav, footer and every section */
+  .container-page {
+    @apply mx-2 px-2 sm:px-4 lg:px-5 max-w-7xl;
+  }
+
+  /* Page background + text colour for inner pages */
+  .page {
+    @apply bg-white dark:bg-zinc-950 text-zinc-950 dark:text-white;
+  }
+
+  .divider-top {
+    @apply border-t border-zinc-200 dark:border-zinc-800;
+  }
+
+  .divider-bottom {
+    @apply border-b border-zinc-200 dark:border-zinc-800;
+  }
+
+  /* Two-column card grid (one column on phones) */
+  .card-grid {
+    @apply gap-5 grid sm:grid-cols-2;
+  }
+
+  /* Vertical list of cards */
+  .stack {
+    @apply gap-4 grid;
+  }
+
+  /* ---------- Typography ---------- */
+
+  /* Small grey uppercase label above a heading */
+  .eyebrow {
+    @apply font-semibold text-zinc-500 dark:text-zinc-400 text-sm uppercase tracking-wide;
+  }
+
+  .heading-hero {
+    @apply font-semibold text-zinc-950 dark:text-white text-4xl sm:text-5xl tracking-tight;
+  }
+
+  .heading-section {
+    @apply font-semibold text-zinc-950 dark:text-white text-2xl sm:text-3xl leading-tight;
+  }
+
+  .heading-card {
+    @apply font-semibold text-zinc-950 dark:text-white text-base;
+  }
+
+  /* Tiny uppercase heading (footer columns, "Core Focus Areas") */
+  .heading-mini {
+    @apply font-semibold text-zinc-950 dark:text-white text-xs uppercase;
+  }
+
+  .copy-lead {
+    @apply max-w-3xl text-zinc-600 dark:text-zinc-300 text-lg leading-8;
+  }
+
+  .copy-body {
+    @apply text-zinc-600 dark:text-zinc-300 text-base leading-7;
+  }
+
+  .copy-small {
+    @apply text-zinc-600 dark:text-zinc-300 text-sm leading-6;
+  }
+
+  /* Dates, categories, handles */
+  .copy-meta {
+    @apply font-medium text-zinc-500 dark:text-zinc-400 text-xs uppercase tracking-widest;
+  }
+
+  /* ---------- Surfaces ---------- */
+
+  .card {
+    @apply bg-white dark:bg-zinc-900/40 shadow-sm p-5 border border-zinc-200 dark:border-zinc-800 rounded-lg;
+  }
+
+  .card--compact {
+    @apply p-3;
+  }
+
+  /* Rounded, bordered box that crops an image inside it */
+  .media-frame {
+    @apply bg-zinc-950 shadow-sm border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden;
+  }
+
+  /* ---------- Small pieces ---------- */
+
+  .tag-list {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .tag {
+    @apply inline-flex items-center bg-zinc-50 dark:bg-zinc-900 px-2.5 py-0.5 border border-zinc-200 dark:border-zinc-800 rounded-md font-medium text-zinc-600 dark:text-zinc-300 text-xs;
+  }
+
+  .tag--lg {
+    @apply px-3 py-1;
+  }
+
+  /* Bullet dot for list items. Nudge it down with mt-* to line up with text. */
+  .dot {
+    @apply bg-zinc-950 dark:bg-white rounded-full w-2.5 h-2.5 shrink-0;
+  }
+
+  .dot--sm {
+    @apply w-2 h-2;
+  }
+
+  /* Square initials placeholder for a person */
+  .avatar {
+    @apply flex justify-center items-center bg-zinc-950 dark:bg-white rounded-md w-16 h-16 font-semibold text-white dark:text-zinc-950 text-sm shrink-0;
+  }
+
+  .link-underline {
+    @apply inline-flex font-semibold text-zinc-950 dark:text-white text-sm underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-950 dark:decoration-zinc-600 dark:hover:decoration-white transition-colors;
+  }
+
+  .btn {
+    @apply inline-flex items-center bg-white hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-800/80 shadow-sm px-5 py-3 border border-zinc-200 dark:border-zinc-800 rounded-lg font-semibold text-zinc-950 dark:text-white text-sm transition-colors;
+  }
+}

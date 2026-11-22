@@ -1,0 +1,43 @@
+/*
+  BLOCKS — bigger layout pieces built from atoms.
+  Each one has a matching React component in components/ui/, so pages
+  never write this markup by hand:
+
+    .hero     -> <PageHero>
+    .section  -> <PageSection>
+*/
+
+@layer components {
+  /* ---------- Page hero (title + intro + image) ---------- */
+
+  .hero {
+    @apply bg-zinc-50 dark:bg-zinc-900/30;
+  }
+
+  .hero__content {
+    @apply lg:items-start gap-5 grid lg:grid-cols-[1fr_0.9fr] py-16 sm:py-20;
+  }
+
+  /* Taller variant (used by About Us on the home page) */
+  .hero--tall .hero__content {
+    @apply py-24 sm:py-28;
+  }
+
+  .hero__text {
+    @apply justify-self-start p-4 sm:p-6 lg:p-8 max-w-3xl text-left;
+  }
+
+  .hero__image {
+    @apply w-full h-full object-cover aspect-[16/11];
+  }
+
+  /* ---------- Content section (header column + body column) ---------- */
+
+  .section {
+    @apply gap-10 grid lg:grid-cols-[0.85fr_1.6fr] py-14;
+  }
+
+  .section__header {
+    @apply max-w-md;
+  }
+}

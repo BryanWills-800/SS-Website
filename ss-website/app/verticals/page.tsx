@@ -1,5 +1,6 @@
-import React from "react";
-import Image from "next/image";
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
+import TagList from "@/components/ui/TagList";
 
 interface VerticalInfo {
   id: string;
@@ -61,80 +62,47 @@ const verticalsData: VerticalInfo[] = [
 
 export default function VerticalsPage() {
   return (
-    <div className="verticals-page">
-      {/* Verticals Hero */}
-      <section className="verticals-hero" aria-labelledby="verticals-hero-title">
-        <div className="verticals-hero__content">
-          <div className="verticals-hero__text">
-            <p className="verticals-page__label">Technical Domains</p>
-            <h1 id="verticals-hero-title" className="verticals-hero__title">
-              Specialized Divisions
-            </h1>
-            <p className="verticals-hero__copy">
-              Silicon Society is organized into three core technical verticals, providing structured learning tracks, hands-on project labs, and specialized mentorship.
-            </p>
-          </div>
-          <div className="verticals-hero__media">
-            <Image
-              className="verticals-hero__image"
-              src="/image_chip.avif"
-              loading="eager"
-              alt="Silicon chip layout preview"
-              width={640}
-              height={420}
-            />
-          </div>
-        </div>
-      </section>
+    <div className="page">
+      <PageHero
+        titleId="verticals-hero-title"
+        label="Technical Domains"
+        title="Specialized Divisions"
+        image={{ src: "/image_chip.avif", alt: "Silicon chip layout preview" }}
+        imageLoading="eager"
+      >
+        Silicon Society is organized into three core technical verticals, providing structured learning tracks, hands-on project labs, and specialized mentorship.
+      </PageHero>
 
-      {/* Vertical Sections */}
       {verticalsData.map((vert) => (
-        <section
+        <PageSection
           key={vert.id}
           id={vert.id}
-          className={`verticals-section verticals-section--${vert.id}`}
-          aria-labelledby={`${vert.id}-title`}
+          titleId={`${vert.id}-title`}
+          label={vert.label}
+          title={vert.title}
+          subtitle={vert.subtitle}
+          className="divider-bottom"
+          bodyClassName="space-y-6"
         >
-          <div className="verticals-section__header">
-            <p className="verticals-page__label">{vert.label}</p>
-            <h2 id={`${vert.id}-title`} className="verticals-section__title">
-              {vert.title}
-            </h2>
-            <p className="verticals-section__subtitle">
-              {vert.subtitle}
-            </p>
-          </div>
+          <p>{vert.description}</p>
 
-          <div className="verticals-section__body">
-            <p className="verticals-section__description">{vert.description}</p>
-            
-            <div className="verticals-section__focus">
-              <h3 className="verticals-section__subheading">Core Focus Areas</h3>
-              <div className="verticals-focus-list">
-                {vert.focusAreas.map((area) => (
-                  <div key={area} className="verticals-focus-list__item">
-                    <span className="verticals-focus-list__marker" aria-hidden="true" />
-                    <p className="verticals-focus-list__text">{area}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="verticals-section__tools">
-              <h3 className="verticals-section__subheading">Tools & Technologies</h3>
-              <div className="verticals-tools-grid">
-                {vert.toolsAndTech.map((tool) => (
-                  <span
-                    key={tool}
-                    className="verticals-tools-grid__badge"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
+          <div className="mt-4">
+            <h3 className="heading-mini mb-3">Core Focus Areas</h3>
+            <div className="gap-3 grid">
+              {vert.focusAreas.map((area) => (
+                <div key={area} className="card card--compact flex gap-3">
+                  <span className="dot dot--sm mt-1.5" aria-hidden="true" />
+                  <p className="copy-small">{area}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
+
+          <div className="mt-4">
+            <h3 className="heading-mini mb-3">Tools & Technologies</h3>
+            <TagList tags={vert.toolsAndTech} size="lg" />
+          </div>
+        </PageSection>
       ))}
     </div>
   );

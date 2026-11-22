@@ -100,7 +100,7 @@ function NavigationItem({ item }: { item: NavItem }) {
 export default function Navigation() {
   return (
     <nav className="site-nav" aria-label="Primary">
-      <div className="site-nav__inner">
+      <div className="site-nav__inner container-page">
         <div className="site-nav__links">
           {links.map((link) => (
             <NavigationItem key={link.label} item={link} />
