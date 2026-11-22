@@ -1,0 +1,187 @@
+/*
+  SHELL — the parts on every page: app wrapper, header, nav, footer.
+  Width/padding come from `container-page` (atoms.css) in the JSX.
+*/
+
+/* App shell */
+
+@layer components {
+  .app-html {
+    @apply h-full antialiased;
+  }
+
+  .app-body {
+    @apply flex flex-col bg-page min-h-full text-ink;
+  }
+
+  .app-main {
+    @apply flex flex-col flex-1;
+  }
+}
+
+/* Site header */
+
+@layer components {
+  .site-header {
+    @apply top-0 z-50 isolate relative overflow-hidden;
+  }
+
+  .site-header__background {
+    @apply -z-10 absolute inset-0;
+  }
+
+  .site-header__background::after {
+    content: "";
+    @apply absolute inset-0 bg-zinc-950/55;
+  }
+
+  .site-header__video {
+    @apply w-full h-full object-cover;
+  }
+
+  .site-header__inner {
+    @apply z-10 relative flex justify-between items-center gap-4 h-32;
+  }
+
+  .site-header__brand {
+    @apply flex items-center gap-3 min-w-0;
+  }
+
+  .site-header__mark {
+    @apply bg-white shadow-sm border border-line rounded-lg w-25 h-25 overflow-hidden shrink-0;
+  }
+
+  .site-header__logo {
+    @apply w-full h-full object-cover;
+  }
+
+  .site-header__brand-copy {
+    @apply min-w-0;
+  }
+
+  .site-header__title {
+    @apply block font-semibold text-white text-3xl truncate;
+  }
+
+  .site-header__subtitle {
+    @apply block font-semibold text-white text-base truncate;
+  }
+
+  .site-header__actions {
+    @apply flex items-center gap-2 sm:gap-3 shrink-0;
+  }
+}
+
+/* Site nav */
+
+@layer components {
+  .site-nav {
+    @apply border-b border-blue-100 bg-blue-50/50 dark:border-blue-800/50 dark:bg-blue-950/20;
+  }
+
+  .site-nav__inner {
+    @apply text-center;
+  }
+
+  .site-nav__links {
+    @apply flex space-x-5 h-12 max-h-[40px] overflow-visible;
+  }
+
+  .site-nav__link {
+    @apply inline-flex items-center px-2 border-transparent hover:border-rule border-b-2 font-medium text-muted hover:text-ink text-sm whitespace-nowrap transition-colors;
+  }
+
+  .site-nav__link--active {
+    @apply border-indigo-600 dark:border-indigo-400 text-ink;
+  }
+
+  .site-nav__dropdown {
+    @apply relative flex;
+  }
+
+  .site-nav__dropdown-trigger {
+    @apply gap-1.5;
+  }
+
+  .site-nav__dropdown-caret {
+    @apply text-[10px] text-zinc-400 leading-none transition-transform;
+  }
+
+  .site-nav__dropdown-menu {
+    @apply invisible absolute left-0 top-full z-40 mt-2 min-w-44 rounded-md border border-line bg-raised p-1 opacity-0 shadow-lg shadow-zinc-900/5 transition-all;
+  }
+
+  .site-nav__dropdown:hover .site-nav__dropdown-menu,
+  .site-nav__dropdown:focus-within .site-nav__dropdown-menu {
+    @apply visible opacity-100;
+  }
+
+  .site-nav__dropdown:hover .site-nav__dropdown-caret,
+  .site-nav__dropdown:focus-within .site-nav__dropdown-caret {
+    @apply rotate-180;
+  }
+
+  .site-nav__dropdown-link {
+    @apply block hover:bg-hover px-3 py-2 rounded font-medium text-body hover:text-ink text-sm transition-colors;
+  }
+}
+
+/* Site footer */
+
+@layer components {
+  .site-footer {
+    @apply bg-page mt-auto border-line border-t;
+  }
+
+  .site-footer__inner {
+    @apply py-10;
+  }
+
+  .site-footer__content {
+    @apply gap-10 grid lg:grid-cols-[1.4fr_2fr];
+  }
+
+  .site-footer__summary {
+    @apply max-w-sm;
+  }
+
+  .site-footer__brand {
+    @apply flex items-center gap-2;
+  }
+
+  .site-footer__mark {
+    @apply bg-white border border-line rounded-md w-25 h-25 overflow-hidden shrink-0;
+  }
+
+  .site-footer__logo {
+    @apply w-full h-full object-cover;
+  }
+
+  .site-footer__brand-name {
+    @apply font-bold text-ink text-2xl;
+  }
+
+  .site-footer__brand-text {
+    @apply flex flex-col gap-0;
+  }
+
+  .site-footer__description {
+    @apply mt-1 text-body text-sm leading-6;
+  }
+
+  .site-footer__sections {
+    @apply flex flex-wrap gap-10 ml-auto;
+  }
+
+  .site-footer__list {
+    @apply space-y-3 mt-4;
+  }
+
+  .site-footer__link {
+    @apply text-body hover:text-ink text-sm transition-colors;
+  }
+
+  .site-footer__bottom {
+    @apply flex sm:flex-row flex-col sm:justify-between sm:items-center gap-3 mt-10 pt-6 border-line border-t text-muted text-sm;
+  }
+}

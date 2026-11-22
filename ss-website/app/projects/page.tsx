@@ -1,5 +1,6 @@
-import React from "react";
-import Image from "next/image";
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
+import TagList from "@/components/ui/TagList";
 
 interface ProjectItem {
   id: string;
@@ -72,86 +73,57 @@ const pastProjects: ProjectItem[] = [
 
 function ProjectCard({ project }: { project: ProjectItem }) {
   return (
-    <article className="project-card">
-      <div className="project-card__meta">
-        <span className="project-card__category">{project.metaText}</span>
+    <article className="card flex flex-col">
+      <div className="flex justify-between items-center w-full">
+        <span className="copy-meta">{project.metaText}</span>
       </div>
-      <h3 className="project-card__title">{project.title}</h3>
-      <p className="project-card__description">{project.description}</p>
-      <div className="project-card__tags">
-        {project.tags.map((tag) => (
-          <span key={tag} className="project-card__tag">
-            {tag}
-          </span>
-        ))}
-      </div>
+      <h3 className="heading-card mt-2 text-xl">{project.title}</h3>
+      <p className="copy-small mt-2">{project.description}</p>
+      <TagList tags={project.tags} className="mt-4" />
     </article>
   );
 }
 
 export default function ProjectsPage() {
   return (
-    <div className="projects-page">
-      {/* Projects Hero */}
-      <section className="projects-hero" aria-labelledby="projects-hero-title">
-        <div className="projects-hero__content">
-          <div className="projects-hero__text">
-            <p className="projects-page__label">Innovation & Engineering</p>
-            <h1 id="projects-hero-title" className="projects-hero__title">
-              Our Projects
-            </h1>
-            <p className="projects-hero__copy">
-              Explore the hardware designs, embedded systems, silicon research, and digital core pipelines engineered by members of Silicon Society.
-            </p>
-          </div>
-          <div className="projects-hero__media">
-            <Image
-              className="projects-hero__image"
-              src="/image_chip.avif"
-              loading="eager"
-              alt="Processor chip design"
-              width={640}
-              height={420}
-            />
-          </div>
-        </div>
-      </section>
+    <div className="page">
+      <PageHero
+        titleId="projects-hero-title"
+        label="Innovation & Engineering"
+        title="Our Projects"
+        image={{ src: "/image_chip.avif", alt: "Processor chip design" }}
+        imageLoading="eager"
+      >
+        Explore the hardware designs, embedded systems, silicon research, and digital core pipelines engineered by members of Silicon Society.
+      </PageHero>
 
-      {/* Current Projects Section */}
-      <section id="current" className="projects-section projects-section--current" aria-labelledby="current-projects-title">
-        <div className="projects-section__header">
-          <p className="projects-page__label">Active Development</p>
-          <h2 id="current-projects-title" className="projects-section__title">
-            Current Projects
-          </h2>
+      <PageSection
+        id="current"
+        titleId="current-projects-title"
+        label="Active Development"
+        title="Current Projects"
+        className="divider-bottom"
+      >
+        <div className="card-grid">
+          {currentProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
+      </PageSection>
 
-        <div className="projects-section__body">
-          <div className="projects-grid">
-            {currentProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+      <PageSection
+        id="past"
+        titleId="past-work-title"
+        label="Archive & Milestones"
+        title="Past Work"
+        className="divider-top"
+      >
+        <div className="card-grid">
+          {pastProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
-      </section>
-
-      {/* Past Work Section */}
-      <section id="past" className="projects-section projects-section--past" aria-labelledby="past-work-title">
-        <div className="projects-section__header">
-          <p className="projects-page__label">Archive & Milestones</p>
-          <h2 id="past-work-title" className="projects-section__title">
-            Past Work
-          </h2>
-        </div>
-
-        <div className="projects-section__body">
-          <div className="projects-grid">
-            {pastProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
+      </PageSection>
     </div>
   );
 }

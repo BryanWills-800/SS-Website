@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import SiteLink from "@/components/ui/SiteLink";
 
 const logoSrc = "/logo.jpeg";
 
@@ -10,7 +10,7 @@ export default function Footer() {
     {
       title: "About the Society",
       links: [
-        { label: "About Us", href: "#about-us" },
+        { label: "About Us", href: "/#about-us" },
         { label: "Join Us", href: "/join-us" },
       ],
     },
@@ -24,7 +24,7 @@ export default function Footer() {
     {
       title: "Follow Us",
       links: [
-        { label: "LinkedIn", href: LINKEDIN_LINK, active: false },
+        { label: "LinkedIn", href: LINKEDIN_LINK },
       ],
     },
   ];
@@ -33,7 +33,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="site-footer__inner">
+      <div className="site-footer__inner container-page">
         <div className="site-footer__content">
           <div className="site-footer__summary">
             <div className="site-footer__brand">
@@ -58,13 +58,13 @@ export default function Footer() {
           <div className="site-footer__sections">
             {sections.map((section) => (
               <div key={section.title} className="site-footer__section">
-                <h3 className="site-footer__heading">{section.title}</h3>
+                <h3 className="heading-mini">{section.title}</h3>
                 <ul className="site-footer__list">
                   {section.links.map((link) => (
                     <li key={link.label}>
-                      <a href={link.href} className="site-footer__link">
+                      <SiteLink href={link.href} className="site-footer__link">
                         {link.label}
-                      </a>
+                      </SiteLink>
                     </li>
                   ))}
                 </ul>

@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
 
 interface RecruitmentStep {
   id: string;
@@ -42,108 +42,81 @@ const recruitmentSteps: RecruitmentStep[] = [
 
 function RecruitmentStepItem({ step }: { step: RecruitmentStep }) {
   return (
-    <div className="join-us-steps__item">
-      <span className="join-us-steps__marker" aria-hidden="true" />
-      <div className="join-us-steps__content">
-        <h3 className="join-us-steps__title">Step {step.stepNumber}: {step.title}</h3>
-        <p className="join-us-steps__description">{step.description}</p>
+    <div className="card flex gap-4">
+      <span className="dot mt-2" aria-hidden="true" />
+      <div className="min-w-0">
+        <h3 className="heading-card">Step {step.stepNumber}: {step.title}</h3>
+        <p className="copy-small mt-1">{step.description}</p>
       </div>
     </div>
   );
 }
 
-export default function joinUsPage() {
+export default function JoinUsPage() {
   return (
-    <div className="join-us-page">
-      {/* Join Us Hero */}
-      <section className="join-us-hero" aria-labelledby="join-hero-title">
-        <div className="join-us-hero__content">
-          <div className="join-us-hero__text">
-            <p className="join-us-page__label">Recruitment & Membership</p>
-            <h1 id="join-hero-title" className="join-us-hero__title">
-              Join Silicon Society
-            </h1>
-            <p className="join-us-hero__copy">
-              Become part of BITS Pilani&apos;s premier student organization dedicated to semiconductors, hardware architecture, embedded systems, and silicon research.
-            </p>
-          </div>
-          <div className="join-us-hero__media">
-            <Image
-              className="join-us-hero__image"
-              src="/image_chip.avif"
-              loading="eager"
-              alt="Circuit design lab"
-              width={640}
-              height={420}
-            />
-          </div>
-        </div>
-      </section>
+    <div className="page">
+      <PageHero
+        titleId="join-hero-title"
+        label="Recruitment & Membership"
+        title="Join Silicon Society"
+        image={{ src: "/image_chip.avif", alt: "Circuit design lab" }}
+        imageLoading="eager"
+      >
+        Become part of BITS Pilani&apos;s premier student organization dedicated to semiconductors, hardware architecture, embedded systems, and silicon research.
+      </PageHero>
 
-      {/* Recruitment Process */}
-      <section id="process" className="join-us-section join-us-section--process" aria-labelledby="process-title">
-        <div className="join-us-section__header">
-          <p className="join-us-page__label">How to Apply</p>
-          <h2 id="process-title" className="join-us-section__title">
-            Recruitment Process
-          </h2>
+      <PageSection
+        id="process"
+        titleId="process-title"
+        label="How to Apply"
+        title="Recruitment Process"
+        className="divider-bottom"
+      >
+        <div className="stack">
+          {recruitmentSteps.map((step) => (
+            <RecruitmentStepItem key={step.id} step={step} />
+          ))}
         </div>
+      </PageSection>
 
-        <div className="join-us-section__body">
-          <div className="join-us-steps">
-            {recruitmentSteps.map((step) => (
-              <RecruitmentStepItem key={step.id} step={step} />
-            ))}
-          </div>
+      <PageSection
+        id="apply"
+        titleId="apply-title"
+        label="Applications Open"
+        title="Ready to Build Hardware?"
+        className="divider-top"
+      >
+        <p>
+          Recruitment drives are held at the beginning of each semester. Whether you are a beginner eager to learn digital logic or an experienced student working on chip design, all interested BITSians are encouraged to apply!
+        </p>
+        <div className="mt-6">
+          <a
+            href="https://forms.google.com"
+            target="_blank"
+            rel="noreferrer"
+            className="btn"
+          >
+            Fill Recruitment Interest Form →
+          </a>
         </div>
-      </section>
+      </PageSection>
 
-      {/* Application Form Info Section */}
-      <section id="apply" className="join-us-section join-us-section--apply" aria-labelledby="apply-title">
-        <div className="join-us-section__header">
-          <p className="join-us-page__label">Applications Open</p>
-          <h2 id="apply-title" className="join-us-section__title">
-            Ready to Build Hardware?
-          </h2>
-        </div>
-
-        <div className="join-us-section__body">
-          <p className="join-us-section__description">
-            Recruitment drives are held at the beginning of each semester. Whether you are a beginner eager to learn digital logic or an experienced student working on chip design, all interested BITSians are encouraged to apply!
+      {/* Learning Resources — hidden until /learning-resources exists */}
+      {false && (
+        <PageSection
+          id="resources"
+          titleId="resources-title"
+          label="Learning Resources"
+          title="Supplementary Courses"
+        >
+          <p>
+            Explore curated video courses to build a solid foundation in digital design, VLSI, and electronic devices.
           </p>
-          <div className="join-us-section__cta">
-            <a
-              href="https://forms.google.com"
-              target="_blank"
-              rel="noreferrer"
-              className="join-us-button"
-            >
-              Fill Recruitment Interest Form →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Learning Resources */}
-
-      {false &&
-        <section id="resources" className="join-us-section join-us-section--resources" aria-labelledby="resources-title">
-          <div className="join-us-section__header">
-            <p className="join-us-page__label">Learning Resources</p>
-            <h2 id="resources-title" className="join-us-section__title">
-              Supplementary Courses
-            </h2>
-          </div>
-          <div className="join-us-section__body">
-            <p className="join-us-section__description">
-              Explore curated video courses to build a solid foundation in digital design, VLSI, and electronic devices.
-            </p>
-            <Link href="/learning-resources" className="join-us-button">
-              View Courses →
-            </Link>
-          </div>
-        </section>
-      }
+          <Link href="/learning-resources" className="btn">
+            View Courses →
+          </Link>
+        </PageSection>
+      )}
     </div>
   );
 }

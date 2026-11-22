@@ -1,0 +1,107 @@
+/*
+  LEADERSHIP — the frosted card of people with a big outlined backdrop and a
+  blurred pastel glow. Markup lives in components/Leadership.tsx.
+  Colours still come from the theme tokens (base.css) except the glow
+  gradient and the LinkedIn blue, which are the same in both themes.
+*/
+
+@layer components {
+  .leadership {
+    @apply relative mt-16 px-4 pb-24 overflow-x-clip;
+    /* Keeps the card's glow (z-index -1) behind the card but above the page background */
+    isolation: isolate;
+  }
+
+  /* ---------- Outlined text behind everything ---------- */
+
+  .leadership__backdrop {
+    @apply absolute inset-0 overflow-hidden pointer-events-none select-none;
+  }
+
+  .leadership__backdrop-row {
+    @apply block font-black text-transparent uppercase whitespace-nowrap;
+    font-size: clamp(4.5rem, 12.5vw, 10rem);
+    line-height: 0.94;
+    -webkit-text-stroke: 1px var(--ink);
+  }
+
+  /* every other row is shifted so the words don't line up */
+  .leadership__backdrop-row:nth-child(even) {
+    transform: translateX(-30%);
+  }
+
+  /* ---------- Title ---------- */
+
+  .leadership__title {
+    @apply relative mt-12 font-light text-ink text-center;
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    font-size: clamp(2.75rem, 5vw, 4rem);
+    line-height: 1.2;
+  }
+
+  /* ---------- Card ---------- */
+
+  .leadership__card {
+    @apply relative mx-auto mt-8 px-6 sm:px-12 lg:px-16 py-10 sm:py-12 border border-white/12 w-full max-w-[70rem];
+    border-radius: 2rem;
+    background: color-mix(in srgb, var(--raised) 91%, transparent);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.1);
+  }
+
+  /* blurred gradient glow peeking out from behind the card */
+  .leadership__card::before {
+    content: "";
+    position: absolute;
+    inset: -2.5px;
+    z-index: -1;
+    background: linear-gradient(45deg, #f3c8e2, #d8b1ff, rgb(255 193 177 / 0.87), #90d4ff);
+    filter: blur(100px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .leadership__card {
+      box-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+    }
+
+    .leadership__card::before {
+      opacity: 0.55;
+    }
+  }
+
+  .leadership__grid {
+    @apply justify-items-center items-start gap-12 sm:gap-8 grid sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  /* ---------- One person ---------- */
+
+  .profile {
+    @apply flex flex-col items-center w-full text-center;
+  }
+
+  .profile__photo {
+    @apply block w-full max-w-[270px] h-auto;
+  }
+
+  /* shown until a real photo is added */
+  .profile__photo--placeholder {
+    @apply flex justify-center items-center bg-chip border border-line font-semibold text-muted text-6xl;
+    aspect-ratio: 1;
+  }
+
+  .profile__role {
+    @apply mt-4 text-muted text-2xl;
+    font-family: var(--font-nunito), sans-serif;
+    line-height: 1.5;
+  }
+
+  .profile__name {
+    @apply text-ink text-5xl;
+    font-family: var(--font-bebas-neue), Impact, sans-serif;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .profile__linkedin {
+    @apply inline-flex mt-6 text-[#0d6efd] dark:text-blue-400 hover:opacity-80 transition-opacity;
+  }
+}

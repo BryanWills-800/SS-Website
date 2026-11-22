@@ -1,5 +1,5 @@
-import React from "react";
-import Image from "next/image";
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
 
 interface SocialPlatform {
   name: string;
@@ -42,63 +42,44 @@ const socialPlatforms: SocialPlatform[] = [
 
 export default function SocialsPage() {
   return (
-    <div className="socials-page">
-      {/* Socials Hero */}
-      <section className="socials-hero" aria-labelledby="socials-hero-title">
-        <div className="socials-hero__content">
-          <div className="socials-hero__text">
-            <p className="socials-page__label">Community & Media</p>
-            <h1 id="socials-hero-title" className="socials-hero__title">
-              Connect With Us
-            </h1>
-            <p className="socials-hero__copy">
-              Stay updated with Silicon Society across our social channels, open-source repositories, and video lectures.
-            </p>
-          </div>
-          <div className="socials-hero__media">
-            <Image
-              className="socials-hero__image"
-              src="/image_chip.avif"
-              loading="eager"
-              alt="Community banner"
-              width={640}
-              height={420}
-            />
-          </div>
-        </div>
-      </section>
+    <div className="page">
+      <PageHero
+        titleId="socials-hero-title"
+        label="Community & Media"
+        title="Connect With Us"
+        image={{ src: "/image_chip.avif", alt: "Community banner" }}
+        imageLoading="eager"
+      >
+        Stay updated with Silicon Society across our social channels, open-source repositories, and video lectures.
+      </PageHero>
 
-      {/* Social Channels List */}
-      <section id="channels" className="socials-section socials-section--channels" aria-labelledby="channels-title">
-        <div className="socials-section__header">
-          <p className="socials-page__label">Social Hub</p>
-          <h2 id="channels-title" className="socials-section__title">
-            Official Channels
-          </h2>
+      <PageSection
+        id="channels"
+        titleId="channels-title"
+        label="Social Hub"
+        title="Official Channels"
+        className="divider-bottom"
+      >
+        <div className="card-grid">
+          {socialPlatforms.map((platform) => (
+            <article key={platform.name} className="card flex flex-col justify-between">
+              <div className="flex flex-col gap-1">
+                <h3 className="heading-card">{platform.name}</h3>
+                <span className="copy-meta">{platform.handle}</span>
+              </div>
+              <p className="copy-small mt-2">{platform.description}</p>
+              <a
+                className="link-underline mt-4"
+                href={platform.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {platform.actionText} →
+              </a>
+            </article>
+          ))}
         </div>
-
-        <div className="socials-section__body">
-          <div className="socials-grid">
-            {socialPlatforms.map((platform) => (
-              <article key={platform.name} className="social-card">
-                <div className="social-card__header">
-                  <h3 className="social-card__name">{platform.name}</h3>
-                  <span className="social-card__handle">{platform.handle}</span>
-                </div>
-                <p className="social-card__description">{platform.description}</p>
-                <a
-                  className="social-card__link"
-                  href={platform.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {platform.actionText} →
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      </PageSection>
     </div>
   );
 }
