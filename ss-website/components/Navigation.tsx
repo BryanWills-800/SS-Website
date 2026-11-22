@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import SiteLink from "@/components/ui/SiteLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -84,9 +84,9 @@ function getActiveHref(pathname: string, aboutInView: boolean): string | null {
 
 function NavDropdownLink({ link }: { link: NavLink }) {
   return (
-    <Link href={link.href} className="site-nav__dropdown-link">
+    <SiteLink href={link.href} className="site-nav__dropdown-link">
       {link.label}
-    </Link>
+    </SiteLink>
   );
 }
 
@@ -96,19 +96,19 @@ function NavigationItem({ item, active }: { item: NavItem; active: boolean }) {
 
   if (!item.children || item.children.length === 0) {
     return (
-      <Link
+      <SiteLink
         href={item.href}
         aria-current={active ? "page" : undefined}
         className={linkClassName}
       >
         {item.label}
-      </Link>
+      </SiteLink>
     );
   }
 
   return (
     <div className="site-nav__dropdown">
-      <Link
+      <SiteLink
         href={item.href}
         aria-current={active ? "page" : undefined}
         className={`${linkClassName} site-nav__dropdown-trigger`}
@@ -116,7 +116,7 @@ function NavigationItem({ item, active }: { item: NavItem; active: boolean }) {
       >
         <span>{item.label}</span>
         <span className="site-nav__dropdown-caret" aria-hidden="true"> ▼ </span>
-      </Link>
+      </SiteLink>
 
       <div className="site-nav__dropdown-menu">
         {item.children.map((child) => (
