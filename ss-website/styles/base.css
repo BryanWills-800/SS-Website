@@ -1,27 +1,84 @@
-/* Main theme variables */
+/*
+  THEME TOKENS — the one place light and dark colours are decided.
+
+  Every neutral colour on the site is one of these tokens, used as a
+  Tailwind utility: bg-page, bg-raised, border-line, text-ink, text-body...
+  They switch automatically with the OS light/dark setting, so a class
+  never needs a `dark:` twin. To tune a theme, change a value here.
+
+  Dark theme follows how most software does it (GitHub, VS Code, Linear):
+  - the page is near-black, not pure black
+  - raised surfaces (cards) are LIGHTER than the page, so depth reads as
+    "closer to you" instead of relying on shadows
+  - text is off-white, not #fff, which glares on dark backgrounds
+  - secondary text is lifted so it still passes WCAG AA (4.5:1)
+
+  Values are Tailwind's zinc palette (hex shown below for reference).
+  Light theme is the original palette, unchanged.
+
+  token    what it is                         light      dark
+  page     page background                    #ffffff    #09090b
+  subtle   banded areas (hero)                #fafafa    #111113
+  raised   cards, menus, buttons              #ffffff    #18181b
+  chip     tags and small pills               #fafafa    #27272a
+  hover    hover fill on raised things        #fafafa    #27272a
+  line     borders and dividers               #e4e4e7    #27272a
+  ink      headings, strongest text           #09090b    #f4f4f5
+  body     paragraphs                         #52525b    #d4d4d8
+  muted    labels, meta, footer fine print    #71717a    #a1a1aa
+  rule     link underline (hover: ink)        #d4d4d8    #52525b
+*/
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  color-scheme: light dark; /* native scrollbars, form controls, overscroll follow the theme */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --page: var(--color-white);
+  --subtle: var(--color-zinc-50);
+  --raised: var(--color-white);
+  --chip: var(--color-zinc-50);
+  --hover: var(--color-zinc-50);
+  --line: var(--color-zinc-200);
+  --ink: var(--color-zinc-950);
+  --body: var(--color-zinc-600);
+  --muted: var(--color-zinc-500);
+  --rule: var(--color-zinc-300);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --page: var(--color-zinc-950);
+    --subtle: #111113; /* between zinc-950 and zinc-900 */
+    --raised: var(--color-zinc-900);
+    --chip: var(--color-zinc-800);
+    --hover: var(--color-zinc-800);
+    --line: var(--color-zinc-800);
+    --ink: var(--color-zinc-100);
+    --body: var(--color-zinc-300);
+    --muted: var(--color-zinc-400);
+    --rule: var(--color-zinc-600);
   }
 }
 
+/* Expose the tokens to Tailwind as colour utilities */
+@theme inline {
+  --color-page: var(--page);
+  --color-subtle: var(--subtle);
+  --color-raised: var(--raised);
+  --color-chip: var(--chip);
+  --color-hover: var(--hover);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page);
+  color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
 }
 

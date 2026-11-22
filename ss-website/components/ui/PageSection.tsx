@@ -38,7 +38,7 @@ export default function PageSection({
           {title}
         </h2>
         {subtitle && (
-          <p className="mt-2 font-semibold text-zinc-600 dark:text-zinc-400 text-sm">
+          <p className="mt-2 font-semibold text-body text-sm">
             {subtitle}
           </p>
         )}
