@@ -1,30 +1,32 @@
 import PageHero from "@/components/ui/PageHero";
 import PageSection from "@/components/ui/PageSection";
+import Leadership, { type LeaderProfile } from "@/components/Leadership";
 
 const aboutHeroImage = "/image_chip.avif";
 
-const leadership = [
+// Add a `photo` (e.g. "/leaders/lead-name.jpeg", file in /public) to replace the initials.
+const leadership: LeaderProfile[] = [
   {
     name: "Lead Name",
-    domain: "Semiconductor Devices",
+    role: "Semiconductor Devices",
     initials: "LN",
     linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Lead Name",
-    domain: "Embedded Systems",
+    role: "Embedded Systems",
     initials: "LN",
     linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Lead Name",
-    domain: "VLSI Design",
+    role: "VLSI Design",
     initials: "LN",
     linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Lead Name",
-    domain: "Signal Processing",
+    role: "Signal Processing",
     initials: "LN",
     linkedin: "https://www.linkedin.com/",
   },
@@ -74,35 +76,7 @@ export default function AboutUs() {
         </p>
       </PageSection>
 
-      <PageSection
-        id="leadership"
-        titleId="leadership-title"
-        label="Leadership Team"
-        title="Core leads across technical domains."
-        className="mx-auto"
-      >
-        <div className="card-grid">
-          {leadership.map((member) => (
-            <article key={`${member.name}-${member.domain}`} className="card flex gap-4">
-              <div className="avatar" aria-hidden="true">
-                {member.initials}
-              </div>
-              <div className="min-w-0 leading-normal">
-                <h3 className="heading-card">{member.name}</h3>
-                <p className="copy-small mt-1">{member.domain}</p>
-                <a
-                  className="link-underline mt-3"
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LinkedIn profile
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </PageSection>
+      <Leadership leaders={leadership} />
 
       <PageSection
         id="advisory"

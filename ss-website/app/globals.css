@@ -8,6 +8,7 @@
   atoms.css    small reusable classes (card, tag, eyebrow, heading-*, copy-*)
   blocks.css   page hero + content section layouts (used by components/ui)
   shell.css    header, nav, footer
+  leadership.css  leadership card (About Us)
   home.css     home page (welcome + news bulletin)
   testing.css  /testing playground — delete with that page
 */
@@ -16,5 +17,6 @@
 @import "../styles/atoms.css";
 @import "../styles/blocks.css";
 @import "../styles/shell.css";
+@import "../styles/leadership.css";
 @import "../styles/home.css";
 @import "../styles/testing.css";

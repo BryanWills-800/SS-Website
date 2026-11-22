@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Geist, Geist_Mono, Nunito } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Navigation from "@/components/Navigation";
@@ -12,6 +12,18 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// Used by the leadership section (names and role labels)
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
@@ -36,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable} app-html`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${nunito.variable} app-html`}>
       <body className="app-body">
         <Header />
         <Navigation />
