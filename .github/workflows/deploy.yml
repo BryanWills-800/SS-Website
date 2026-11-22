@@ -1,12 +1,68 @@
 name: Deploy
 
+# Manual deploy to Vercel using the Vercel CLI.
+# Vercel's Git integration also deploys on push. If you keep that enabled,
+# run this workflow only for production promotions, or disable the Git
+# integration for the project to avoid duplicate deployments.
+
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Vercel environment to deploy to
+        type: choice
+        options: [preview, production]
+        default: preview
+
+permissions:
+  contents: read
+
+# Never run two production deploys at once; let an in-flight deploy finish.
+concurrency:
+  group: deploy-${{ inputs.environment }}
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    name: Deploy to ${{ inputs.environment }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ inputs.environment }}
+
+    defaults:
+      run:
+        working-directory: ./ss-website
+
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TARGET: ${{ inputs.environment }}
 
     steps:
-      - name: Placeholder
-        run: echo "Configure deployment for your hosting provider."
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ./ss-website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Pull Vercel project settings and environment
+        run: npx --yes vercel pull --yes --environment="$VERCEL_TARGET"
+
+      - name: Build for Vercel
+        run: npx --yes vercel build --target="$VERCEL_TARGET"
+
+      - name: Deploy prebuilt output
+        run: |
+          if [ "$VERCEL_TARGET" = "production" ]; then
+            npx --yes vercel deploy --prebuilt --prod
+          else
+            npx --yes vercel deploy --prebuilt
+          fi

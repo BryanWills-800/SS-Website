@@ -1,12 +1,23 @@
 version: 2
 
 updates:
+  # The npm project lives in ss-website/, not the repo root.
   - package-ecosystem: npm
-    directory: "/"
+    directory: "/ss-website"
     schedule:
       interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
 
+  # Workflow files are in .github/ at the repo root.
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ["*"]
